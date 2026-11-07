@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "shows": {
+    "180770": {
+      "lead": "s4-release",
+      "facts": [
+        {
+          "id": "s4-release",
+          "kind": "release",
+          "season": 4,
+          "headline": "Final season: 9 July 2027",
+          "detail": "Apple has announced the UK premiere of the fourth season for 9 July 2027. No more precise production phase is inferred from that date.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Apple TV Press UK",
+              "url": "https://www.apple.com/uk/tv-pr/news/2026/09/apple-tvs-global-hit-drama-silo-to-return-for-fourth-and-final-season-on-july-9-2027/",
+              "published_on": "2026-09-04"
+            }
+          ],
+          "release": {
+            "precision": "day",
+            "value": "2027-07-09",
+            "region": "UK"
+          }
+        },
+        {
+          "id": "final-season",
+          "kind": "outcome",
+          "season": 4,
+          "headline": "Season 4 is the planned finale",
+          "detail": "Apple describes the fourth season as the conclusion of the series, rather than a cancellation.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Apple TV Press",
+              "url": "https://www.apple.com/tv-pr/news/2024/12/apple-tv-renews-hit-world-building-drama-silo-for-seasons-three-and-four/",
+              "published_on": "2024-12-16"
+            }
+          ]
+        }
+      ]
+    },
+    "154997": {
+      "lead": "s3-filming",
+      "facts": [
+        {
+          "id": "s3-filming",
+          "kind": "production",
+          "season": 3,
+          "headline": "Season 3: filming confirmed",
+          "detail": "Adam Scott confirmed filming was underway in his August interview. A premiere date has not been established by this evidence.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "The Wrap / Adam Scott interview",
+              "url": "https://www.thewrap.com/media-platforms/tv/adam-scott-severance-season-3-filming/",
+              "published_on": "2026-08-25"
+            }
+          ]
+        },
+        {
+          "id": "s3-renewal",
+          "kind": "renewal",
+          "season": 3,
+          "headline": "Season 3 greenlit",
+          "detail": "Apple has commissioned a third season.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Apple TV Press",
+              "url": "https://www.apple.com/ca/tv-pr/news/2025/03/praise-kier-apples-global-hit-emmy-and-peabody-award-winning-workplace-thriller-severance-lands-season-three-renewal/",
+              "published_on": "2025-03-21"
+            }
+          ]
+        }
+      ]
+    },
+    "206790": {
+      "lead": "s2-production",
+      "facts": [
+        {
+          "id": "s2-production",
+          "kind": "production",
+          "season": 2,
+          "headline": "Season 2: in production",
+          "detail": "The industry listing records production as underway from 31 October in Albuquerque. Treat this as an industry report, not an Apple release announcement. The premiere date is unknown.",
+          "confidence": "reported",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Production List / FTIA",
+              "url": "https://www.productionlist.com/production/pluribus-season-2",
+              "published_on": "2026-10-31"
+            }
+          ]
+        }
+      ]
+    },
+    "150900": {
+      "lead": "s3-release",
+      "facts": [
+        {
+          "id": "s3-release",
+          "kind": "release",
+          "season": 3,
+          "headline": "Season 3: 11 November",
+          "detail": "The new season opens with four episodes. Amazon also confirms the November return in its UK announcement.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Amazon / Prime Video",
+              "url": "https://www.aboutamazon.com/news/entertainment/lord-of-the-rings-rings-of-power-season-3-prime-video",
+              "published_on": "2026-10-21"
+            },
+            {
+              "name": "Amazon UK",
+              "url": "https://www.aboutamazon.co.uk/news/entertainment/the-2026-amazon-uk-upfront-brings-industry-standard-measurement-to-prime-video-and-local-relevance-to-national-campaigns",
+              "published_on": null
+            }
+          ],
+          "release": {
+            "precision": "day",
+            "value": "2026-11-11",
+            "region": "UK; worldwide premiere"
+          }
+        }
+      ]
+    },
+    "169972": {
+      "lead": "s2-window",
+      "facts": [
+        {
+          "id": "s2-window",
+          "kind": "release",
+          "season": 2,
+          "headline": "Season 2: coming in 2026",
+          "detail": "Netflix lists the second season in its 2026 slate. This is a year-only announcement: no day or month is claimed.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Netflix Tudum",
+              "url": "https://www.netflix.com/tudum/articles/new-shows-on-netflix-2026",
+              "published_on": "2026-05-01"
+            }
+          ],
+          "release": {
+            "precision": "year",
+            "value": "2026",
+            "region": "Netflix announcement; UK timing unverified"
+          }
+        },
+        {
+          "id": "s3-renewal",
+          "kind": "renewal",
+          "season": 3,
+          "headline": "Season 3 also commissioned",
+          "detail": "Netflix confirms renewal through the third season. That does not establish a third-season release window.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Netflix Tudum",
+              "url": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
+              "published_on": "2025-11-26"
+            }
+          ]
+        }
+      ]
+    },
+    "205398": {
+      "lead": "s2-return",
+      "facts": [
+        {
+          "id": "s2-return",
+          "kind": "release",
+          "season": 2,
+          "headline": "Season 2 resumes 11 November",
+          "detail": "The second batch begins with three episodes in the UK, with six new episodes in this part of the season.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Disney UK Press",
+              "url": "https://press.disney.co.uk/news/the-stakes-have-never-been-higher-rivals-returns-with-new-episodes-on-disney-plus-on-november-11th",
+              "published_on": "2026-09-09"
+            }
+          ],
+          "release": {
+            "precision": "day",
+            "value": "2026-11-11",
+            "region": "UK"
+          }
+        },
+        {
+          "id": "s3-renewal",
+          "kind": "renewal",
+          "season": 3,
+          "headline": "Season 3 greenlit",
+          "detail": "Disney has commissioned twelve episodes for a third season. A release date is not supplied by the renewal announcement.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Disney UK Press",
+              "url": "https://press.disney.co.uk/news/triumphant-and-tantalising-hit-drama-rivals-greenlit-for-a-third-season-on-disneyplus",
+              "published_on": "2026-06-16"
+            }
+          ]
+        }
+      ]
+    },
+    "203632": {
+      "lead": "s2-window",
+      "facts": [
+        {
+          "id": "s2-window",
+          "kind": "release",
+          "season": 2,
+          "headline": "Season 2: March 2027",
+          "detail": "Paramount announced the month at New York Comic Con. The source does not establish an exact day or a separate UK schedule.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Paramount / CBS Studios",
+              "url": "https://www.paramountpressexpress.com/cbs-studios/shows/star-trek-starfleet-academy/releases/?view=113388-star-trek-beams-into-the-big-apple-to-celebrate-star-trek-starfleet-academy-and-60-years-of-the-iconic-franchise-at-new-york-comic-con",
+              "published_on": "2026-10-10"
+            }
+          ],
+          "release": {
+            "precision": "month",
+            "value": "2027-03",
+            "region": "Paramount+ announcement; UK timing unverified"
+          }
+        },
+        {
+          "id": "cancelled",
+          "kind": "outcome",
+          "season": 2,
+          "headline": "Cancelled after season 2",
+          "detail": "Paramount and CBS confirmed the second season would be the last in a statement reported by Variety. It is still due to be released.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Variety / studio statement",
+              "url": "https://au.variety.com/2026/tv/news/star-trek-starfleet-academy-canceled-season-2-34600/",
+              "published_on": "2026-03-25"
+            }
+          ]
+        },
+        {
+          "id": "s2-post",
+          "kind": "production",
+          "season": 2,
+          "headline": "Post-production confirmed in March",
+          "detail": "The showrunners described the second season as being in post-production in their March letter. This is a dated milestone, not a claim that work is still ongoing today.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Variety / showrunners letter",
+              "url": "https://au.variety.com/2026/tv/news/star-trek-starfleet-academy-canceled-season-2-34600/",
+              "published_on": "2026-03-25"
+            }
+          ]
+        }
+      ]
+    },
+    "162206": {
+      "lead": "s5-window",
+      "facts": [
+        {
+          "id": "s5-window",
+          "kind": "release",
+          "season": 5,
+          "headline": "Final season: coming in 2027",
+          "detail": "Paramount says the series returns for a fifth and final season in 2027. There is no exact premiere date in this announcement.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Paramount Press Express",
+              "url": "https://www.paramountpressexpress.com/paramount-plus/releases/?view=113170-star-trek-boldly-celebrates-60-years-on-sept-8",
+              "published_on": "2026-08-27"
+            }
+          ],
+          "release": {
+            "precision": "year",
+            "value": "2027",
+            "region": "Paramount+ announcement; UK timing unverified"
+          }
+        },
+        {
+          "id": "final-season",
+          "kind": "outcome",
+          "season": 5,
+          "headline": "Season 5 is the final season",
+          "detail": "The official announcement identifies the fifth season as the end of the series. It does not describe an already-aired series finale.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-07",
+          "sources": [
+            {
+              "name": "Paramount Press Express",
+              "url": "https://www.paramountpressexpress.com/paramount-plus/releases/?view=113170-star-trek-boldly-celebrates-60-years-on-sept-8",
+              "published_on": "2026-08-27"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

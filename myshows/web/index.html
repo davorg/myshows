@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your shows. What's next. Sourced renewal, production and release updates alongside your Trakt viewing progress.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f4f4ef">
+  <title>My Shows — What's next</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%232f46ed' d='M0 0h48v48H0z'/%3E%3Cpath d='M13 13h22v22h-6V23L16 36l-4-4 13-13H13z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#watchlist">Skip to watchlist</a>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="My Shows home"><span class="brand-mark" aria-hidden="true">↗</span> MY SHOWS<span class="brand-dot">.</span></a>
+      <span class="masthead-note">A PERSONAL TV SIGNAL <span aria-hidden="true">●</span></span>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-title"><p class="eyebrow">RENEWED. IN PRODUCTION. ON ITS WAY.</p><h1 id="page-title">YOUR SHOWS.<br><span>WHAT'S NEXT.</span></h1><p class="intro-copy">The next season. The next release.<br>The place you left off. All in one place.</p></div>
+        <div class="hero-count"><span class="hero-arrow" aria-hidden="true">↗</span><span id="total-shows" class="hero-number">—</span><span class="hero-count-label">STORIES<br>ON THE RADAR</span></div>
+      </section>
+      <section class="summary" aria-label="Watchlist overview">
+        <div class="summary-item summary-watch"><span class="small-label">01 / YOUR BACKLOG</span><div class="summary-value"><span class="summary-number" id="total-unwatched">—</span><h2>EPISODES <br>TO WATCH</h2></div><p id="unwatched-caption">Aired, but not watched. UK availability may differ.</p></div>
+        <div class="summary-item summary-status"><span class="small-label">02 / THE NEXT CHAPTER</span><div class="summary-value"><span class="summary-number" id="announced-shows">—</span><h2>RELEASES <br>ANNOUNCED</h2></div><p>Dates and windows, with the evidence attached.</p></div>
+        <div class="summary-item summary-caught"><span class="small-label">03 / IN THE MEANTIME</span><div class="summary-value"><span class="summary-number" id="caught-up">—</span><h2>ALL <br>CAUGHT UP</h2></div><p>Up to date with the aired episodes in Trakt.</p></div>
+      </section>
+      <div class="snapshot-note"><span>WATCHLIST CHECKED <time id="list-checked">Unknown</time></span><span>STATUS UPDATES HAVE THEIR OWN SOURCES & DATES <span aria-hidden="true">↘</span></span></div>
+      <div id="data-notice" class="data-notice" role="status" hidden></div>
+      <section id="watchlist" class="watchlist" aria-labelledby="watchlist-title">
+        <div class="watchlist-topline"><h2 id="watchlist-title">ON YOUR RADAR <span id="list-count" class="count-label"></span></h2><span class="section-rule" aria-hidden="true"></span></div>
+        <form class="toolbar" role="search">
+          <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><span class="sr-only">Find a show</span><input id="search" type="search" placeholder="FIND A SHOW" autocomplete="off"></label>
+          <div class="filters" role="group" aria-label="Filter by viewing progress"><button type="button" data-filter="all" aria-pressed="true">All shows</button><button type="button" data-filter="unwatched" aria-pressed="false">To watch</button><button type="button" data-filter="caught-up" aria-pressed="false">Caught up</button></div>
+          <label class="select-label"><span class="sr-only">Filter by show status</span><select id="status-filter"><option value="all">All statuses</option><option value="release">Release announced</option><option value="production">Production update</option><option value="renewal">Renewed</option><option value="outcome">Final / cancelled</option><option value="unknown">Unknown</option></select></label>
+          <label class="select-label"><span class="sr-only">Sort shows</span><select id="sort"><option value="release">Next releases</option><option value="title">Title: A–Z</option><option value="unwatched">Most to watch</option></select></label>
+        </form>
+        <p id="results-count" class="sr-only" role="status" aria-live="polite"></p>
+        <ol id="shows" class="shows"></ol>
+        <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">↗</span><h3 id="empty-title">NOTHING HERE. YET.</h3><p id="empty-copy">Try another title or a different filter.</p><button type="button" id="clear-filters">RESET FILTERS</button></div>
+        <noscript><p class="data-notice">Enable JavaScript to display this saved watchlist.</p></noscript>
+      </section>
+      <aside class="availability-note"><span aria-hidden="true">↗</span><div><h2>WHAT'S NEXT ≠ WHERE TO WATCH.</h2><p>Release announcements are shown with their region. UK subscription availability is still being investigated; an aired episode is not automatically available on your services.</p></div></aside>
+      <details class="about"><summary>HOW TO READ THIS DASHBOARD</summary><p>Status headlines are dated, sourced editorial updates. Official announcements and attributable reporting are labelled separately. Renewal, production, release and ending facts are independent: a cancelled show can still have an unreleased final season.</p><p>Announced windows keep their original precision. No month or day is invented. A passed release announcement is marked for review rather than automatically turned into “now streaming”. Status evidence checked more than 30 days ago is flagged for another check.</p><p>Progress comes from Trakt and covers aired regular episodes, including hidden seasons and excluding specials. “Most recently watched” follows viewing timestamps; “furthest watched” follows episode order. Earlier gaps remain unwatched. Rewatch-reset limitations are shown in the details.</p><p>This is a saved snapshot. Opening the page does not refresh Trakt or check news sources. Watched data more than 24 hours old is labelled separately from status evidence. All progress times use your browser's timezone; announcement dates retain their stated region.</p></details>
+    </main>
+    <footer><span class="footer-brand">MY SHOWS.</span><p>My Shows uses Trakt but is not endorsed or certified by Trakt.</p><a href="https://trakt.tv" rel="noreferrer" target="_blank">TRAKT <span aria-hidden="true">↗</span></a></footer>
+  </div>
+  <script type="application/json" id="watchlist-data">__MYSHOWS_DATA__</script>
+</body>
+</html>
