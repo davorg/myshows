@@ -80,7 +80,7 @@ Tests use synthetic fixtures and an in-memory HTTP transport, never real credent
 
 ## Initial technology decision
 
-Python's standard library supplies HTTPS, CLI parsing, SQLite, locking and tests, so this investigation needs no dependency installation or framework. SQLite provides persistent fallback for a single local process and gives us real data before deciding on the hosted architecture. It needs a persistent volume if retained for deployment; it is not a choice of Firebase or a commitment to a particular hosting service. A later web layer can consume the normalized progress data while keeping all OAuth operations private.
+Python's standard library supplies HTTPS, CLI parsing, SQLite, locking and tests, so this investigation needs no dependency installation or framework. SQLite provides persistent fallback locally. The dashboard is now hosted on GitHub Pages: `snapshot --list following` exports only public progress to `data/watchlist.json`, and GitHub Actions builds from that file without credentials or a database. Trakt authentication and refresh remain local; see the [dashboard guide](dashboard.md).
 
 ## API references
 

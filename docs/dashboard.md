@@ -1,19 +1,19 @@
 # Dashboard
 
-The public snapshot is live at [My Shows](https://myshows-davecross.reassuringhibiscus1.chatgpt.site). It uses eight real shows from the owner's cached Trakt list, plus dated, sourced status updates. There is no sample-show fallback and no live Trakt/news access from the browser.
+The public snapshot is live at [My Shows](https://davorg.dev/myshows/). It uses eight real shows from the owner's cached Trakt list, plus dated, sourced status updates. There is no sample-show fallback and no live Trakt/news access from the browser.
 
 ## Build and preview
 
 From the repository root:
 
 ```sh
-python3 -m myshows build --list following
+python3 -m myshows build --snapshot data/watchlist.json
 python3 -m http.server 8000 --bind 127.0.0.1 --directory site/dist
 ```
 
-Open `http://127.0.0.1:8000`. Replace `following` with the actual list slug/ID if different. `build` reads the private SQLite cache without network requests or a valid access token. Use `--output /path/to/public-directory` to choose another output folder. It rejects the private state directory, its ancestors/descendants, and output folders containing unrelated files. Only the four dashboard files are exported.
+Open `http://127.0.0.1:8000`. The public-snapshot build works in a clean checkout without Trakt credentials, a SQLite cache or network access. `build --list following` remains available when building directly from a local private cache; replace `following` with the actual list slug/ID if different. Use `--output /path/to/public-directory` to choose another output folder. It rejects the private state directory, its ancestors/descendants, and output folders containing unrelated files. Only the four dashboard files are exported.
 
-Serve **only `site/dist`**, rather than the repository root. The source assets live in `myshows/web/`; the exporter is `myshows/dashboard.py`. Generated assets are ignored by the main repository. The deployed snapshot is public; no Trakt credentials, account identifiers, list notes, raw API URLs or error bodies are exported.
+Serve **only `site/dist`**, rather than the repository root. The source assets live in `myshows/web/`; the exporter is `myshows/dashboard.py`. Generated assets are ignored by Git. The committed `data/watchlist.json` contains only the public viewing-progress fields already shown on the dashboard; it is not a private backup. The deployed snapshot is public; no Trakt credentials, account identifiers, list notes, raw API URLs or error bodies are exported.
 
 ## What the page shows
 
@@ -35,35 +35,34 @@ Freshness is evaluated when the page opens. Watched information checked more tha
 
 ```sh
 python3 -m myshows sync --list following
-python3 -m myshows build --list following
+python3 -m myshows snapshot --list following
+python3 -m myshows build --snapshot data/watchlist.json
 ```
 
-Run `build` even if `sync` exits unsuccessfully when you want to publish retained data with failure indicators. These are separate commands deliberately: a refresh error must not prevent exporting useful cached values. Neither command by itself updates the hosted Site. Publish the new `site/dist` snapshot after rebuilding. There is no scheduled refresh/publication yet, and a visitor cannot trigger either operation.
+Run `snapshot` after a failed `sync` when you want to publish retained data with failure indicators. These are separate commands deliberately: a refresh error must not prevent exporting useful cached values. Review and commit `data/watchlist.json`, then push to `main`; Actions rebuilds and publishes the page. `snapshot` only reads local cache and preserves original success/error dates. There is no scheduled Trakt refresh, and a visitor cannot trigger refresh or publication.
 
 `build` also reads `data/statuses.json`. Research and edit that file separately to refresh status information; Trakt sync does not check those sources. Unknown shows remain unknown, and invalid status data aborts the build before replacing the previous export.
 
-## Sites publication
+## GitHub Pages publication
 
-The Site identity and static output configuration are stored in `site/.openai/hosting.json`. Reuse that project ID for all future publications. The current saved Site version is **2**, published on 7 November 2026 with the modernist redesign and sourced statuses. Site source is kept in an isolated ignored checkout at `.sites/myshows/`; it contains only the manifest and exported public assets. The source helper commits and pushes that isolated snapshot before packaging and deploying it. Do not copy the repository root or private state into that checkout.
+The workflow is `.github/workflows/pages.yml`. It runs on pushes to `main`, pull requests, and manual dispatch. Both push and PR runs execute the offline tests, syntax checks and a credential-free build. Only a main-branch push or manual main-branch run uploads the four files in `site/dist` and deploys them. PRs have no Pages deployment permissions.
 
-To update through the Sites workflow, rebuild `site/dist`, copy its four files and the manifest into the same isolated checkout, obtain a current source write credential for the existing Site, and use the Sites source helper to save/package that checkout. Pass its exact pushed commit and archive to the native save/deploy tools. Keep write credentials in memory and supply them through the helper's hidden stdin, never in files or command arguments. Public audience was explicitly chosen by the owner and must be preserved.
+Actions are pinned to verified commit SHAs. Build jobs have read-only repository access. Only the deployment job receives `pages: write` and `id-token: write`, using the `github-pages` environment and GitHub's standard upload/deploy actions. There are no Trakt secrets or private-cache artifacts in Actions. A failed test or invalid snapshot leaves the previous successful deployment intact.
 
-The exported files are also ordinary static assets and can be hosted independently if preferred.
+The repository's Pages source is **GitHub Actions** (`build_type: workflow`). The site inherits the account's existing `davorg.dev` domain, so the project URL is `https://davorg.dev/myshows/`. Do not add a repository `CNAME` file for `davorg.dev`; that domain belongs to the existing account site. Relative asset/home links work below `/myshows/` as well as in a local root preview.
 
-## Custom domain
+Publication happens automatically after a push. The Actions run and the `github-pages` environment report the deployment URL and failures. Trakt refresh and status research still need to be performed separately; a workflow rerun does not make source-check dates newer.
 
-`myshows.davecross.co.uk` is attached to the Site, but is **pending DNS verification**. Add these records in the `davecross.co.uk` DNS zone. DNS panels that append the zone name should use the relative Name column:
+## Retired OpenAI Sites hosting
 
-| Type | Name | Value |
-| --- | --- | --- |
-| CNAME | `myshows` | `custom-domains.chatgpt.site.` |
-| TXT | `_openai-site-verification.myshows` | `openai-site-verification=hxDVYZfdI8-2iObZTDw5w3O_JD1iOiGAGaIr3s7j9ZI` |
-| TXT | `_cf-custom-hostname.myshows` | `437fdf7d-a668-4ecb-8539-9fec379896b8` |
+The former Sites deployment is no longer used. Its public access is removed and its pending `myshows.davecross.co.uk` attachment is detached. The Sites manifest has been removed from the repository. Available connector tools do not expose deletion/unpublishing, so the retained old Site is owner-only rather than deleted. There were no Site schedules to migrate.
 
-Full TXT hostnames are `_openai-site-verification.myshows.davecross.co.uk` and `_cf-custom-hostname.myshows.davecross.co.uk`. After the records propagate, refresh the custom-domain status in Sites to verify routing and TLS. The hosted Sites URL already works while DNS is pending. No DNS records were changed by the agent.
+No DNS changes are needed for the GitHub Pages project URL. The old Sites CNAME/TXT setup instructions no longer apply. The ignored `.sites/` directory is only historical local publishing state; it is never read or uploaded by the Pages workflow.
 
 ## Validation
 
-The Python suite currently passes 37 tests, including status evidence/precision validation, stable-ID matching, independent release/ending facts, public-field allowlisting, HTML/script injection prevention, cached/unknown progress, offline building and output-directory protection. JavaScript syntax and Python compilation checks pass.
+The Python suite currently passes 44 tests, including status evidence/precision validation, stable-ID matching, independent release/ending facts, public-field allowlisting, HTML/script injection prevention, cached/unknown progress, offline building and output-directory protection. JavaScript syntax and Python compilation checks pass.
 
 Chromium checks at 1440, 1024, 768, 390 and 320 pixels confirm that all eight statuses and sources render without horizontal overflow; search, status filters, sorting, details and empty states work; and the page makes no external requests. A future-date check confirms that passed announcements and old evidence are flagged without inferring availability. Desktop and mobile screenshots were inspected. Browser tooling is temporary under `/tmp`, not a project dependency.
+
+The portable-snapshot tests also cover a clean checkout with no credentials/state, public-field round trips, invalid-input preservation, stable IDs and retained freshness. The workflow is checked with actionlint, and browser checks verify that assets and interactions work under the `/myshows/` project path.

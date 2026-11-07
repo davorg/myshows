@@ -36,7 +36,7 @@ Only advance `checked_on` after reviewing the evidence. Editing styling, syncing
 1. Research current sources for the affected show.
 2. Add/update its dated facts, preserve the correct season/region/precision, and select the lead.
 3. Run `python3 -m unittest discover -s tests -v`.
-4. Run `python3 -m myshows build --list following` and publish the exported snapshot using the existing Site.
+4. Run `python3 -m myshows build --snapshot data/watchlist.json` to check the result, then commit and push the status file. The GitHub Actions workflow publishes the new dashboard to GitHub Pages.
 
 `myshows/status.py` validates the file and allowlists its public fields. Missing evidence, bad dates, unsupported precision, duplicate fact IDs and unknown lead IDs reject the build before changing the exported page. A missing/unreadable file also fails the build instead of silently removing every status. Select a different file with `build --statuses /path/to/statuses.json`.
 

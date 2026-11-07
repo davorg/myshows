@@ -34,7 +34,7 @@ UK streaming integration and richer production timelines can follow. Basic statu
 
 ### MVP boundaries
 
-No real-time notifications, no replacement for Trakt's watched-history management, no billing integration and no requirement to track active streaming subscriptions. The command-line integration uses Python 3.11+ and SQLite. The first dashboard is a static HTML/CSS/JavaScript snapshot generated from that cache and published with Sites.
+No real-time notifications, no replacement for Trakt's watched-history management, no billing integration and no requirement to track active streaming subscriptions. The command-line integration uses Python 3.11+ and SQLite. GitHub Actions builds the static HTML/CSS/JavaScript dashboard from a public watchlist snapshot and publishes it to GitHub Pages. This project no longer uses OpenAI Sites for deployment.
 
 ## Data sources to investigate
 
@@ -73,12 +73,13 @@ python3 -m myshows auth
 python3 -m myshows lists
 python3 -m myshows sync --list following
 python3 -m myshows report --list following
+python3 -m myshows snapshot --list following
 python3 -m myshows build --list following
 ```
 
 Use the actual ID or slug of your custom list in place of `following`. For a Trakt development app, register a localhost callback and enter that exact URI during `configure` (default: `http://localhost`); the device-code flow needs no local callback server. Credentials and cached personal data stay in the ignored private `.myshows/` directory. Run offline tests with `python3 -m unittest discover -s tests -v`.
 
-The dashboard build writes only public assets to `site/dist/`. To preview it locally, run `python3 -m http.server 8000 --bind 127.0.0.1 --directory site/dist` and visit `http://127.0.0.1:8000`. See the [dashboard guide](docs/dashboard.md) for publication, refresh behaviour and custom-domain DNS records.
+The dashboard build writes only public assets to `site/dist/`. To build from a clean checkout without credentials, run `python3 -m myshows build --snapshot data/watchlist.json`. Preview with `python3 -m http.server 8000 --bind 127.0.0.1 --directory site/dist` and visit `http://127.0.0.1:8000`. See the [dashboard guide](docs/dashboard.md) for GitHub Pages publication and refreshing the public snapshot.
 
 The build merges watched progress with [sourced status assertions](docs/status-updates.md), matched by stable Trakt show ID. It does not refresh the news sources or advance their check dates. Use `--statuses /path/to/statuses.json` to select another validated status file.
 
@@ -88,14 +89,14 @@ Investigate Trakt access ([#3](https://github.com/davorg/myshows/issues/3)) and 
 
 ### Deployment and persistent data
 
-The public test is live at [My Shows](https://myshows-davecross.reassuringhibiscus1.chatgpt.site). The intended custom hostname, `myshows.davecross.co.uk`, is attached in Sites and awaiting DNS verification. An unadvertised hostname is still public: the rendered dashboard, including displayed viewing progress, is visible to visitors. Trakt tokens and other credentials stay in protected local storage; the deployed static page has no refresh or configuration endpoint.
+The public test is hosted at [davorg.dev/myshows](https://davorg.dev/myshows/). The [Pages workflow](.github/workflows/pages.yml) tests pull requests and deploys pushes to `main` or manual runs. It builds from the committed, public [watchlist snapshot](data/watchlist.json) and sourced status file, with no Trakt credentials or SQLite database in Actions. The published page has no refresh or configuration endpoint.
 
-SQLite currently persists the latest successfully retrieved information locally. The hosted page contains a public snapshot of that cache and does not need database access. Firebase remains an option if later requirements need a hosted database. Cached data supports fallback after failed updates; Trakt remains the source of truth for viewing history. Refresh failures preserve original successful-update timestamps and values. An explicitly empty successful response is distinct from an unsuccessful retrieval.
+SQLite persists the latest successfully retrieved information locally. `snapshot --list following` exports only public viewing-progress fields to `data/watchlist.json`; commit and push that file to publish updated progress. Status updates are researched separately in `data/statuses.json`. Firebase remains an option if later requirements need a hosted database. Refresh failures preserve original successful-update timestamps and values; an explicitly empty successful response is distinct from an unsuccessful retrieval.
 
 The command-line integration has automated tests using synthetic API responses. The owner has also confirmed successful live authentication, custom-list retrieval and viewing progress against their Trakt account. Metadata and UK availability providers remain to be evaluated.
 
 ## Status
 
-The owner has verified the live Trakt integration. The public dashboard includes all eight currently followed shows, sourced status headlines, progress, aired-unwatched counts, search, progress/status filters and sorting. Its modernist layout uses sans-serif typography, flat colour blocks and bold headings. Refresh, editorial research and publication are manual; automated metadata and UK streaming integration remain future work.
+The owner has verified the live Trakt integration. The public dashboard includes all eight currently followed shows, sourced status headlines, progress, aired-unwatched counts, search, progress/status filters and sorting. Its modernist layout uses sans-serif typography, flat colour blocks and bold headings. GitHub Actions tests and publishes changes automatically; Trakt refresh and editorial research remain manual. Automated metadata and UK streaming integration remain future work.
 
 My Shows uses Trakt but is not endorsed or certified by Trakt.

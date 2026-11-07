@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "list_checked_at": "2026-11-07T17:49:36+00:00",
+  "list_refresh_failed": false,
+  "shows": [
+    {
+      "trakt_id": 180770,
+      "title": "Silo",
+      "year": 2023,
+      "url": "https://trakt.tv/shows/silo",
+      "progress": {
+        "aired": 30,
+        "watched": 30,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 3,
+          "episode": 10,
+          "watched_at": "2026-09-10T13:15:00+00:00"
+        },
+        "furthest": {
+          "season": 3,
+          "episode": 10,
+          "watched_at": "2026-09-10T13:15:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:37+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 154997,
+      "title": "Severance",
+      "year": 2022,
+      "url": "https://trakt.tv/shows/severance",
+      "progress": {
+        "aired": 19,
+        "watched": 19,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 2,
+          "episode": 10,
+          "watched_at": "2025-03-21T10:27:00+00:00"
+        },
+        "furthest": {
+          "season": 2,
+          "episode": 10,
+          "watched_at": "2025-03-21T10:27:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:37+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 206790,
+      "title": "Pluribus",
+      "year": 2025,
+      "url": "https://trakt.tv/shows/pluribus",
+      "progress": {
+        "aired": 9,
+        "watched": 9,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 1,
+          "episode": 9,
+          "watched_at": "2025-12-24T10:12:00+00:00"
+        },
+        "furthest": {
+          "season": 1,
+          "episode": 9,
+          "watched_at": "2025-12-24T10:12:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:37+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 150900,
+      "title": "The Lord of the Rings: The Rings of Power",
+      "year": 2022,
+      "url": "https://trakt.tv/shows/the-lord-of-the-rings-the-rings-of-power",
+      "progress": {
+        "aired": 16,
+        "watched": 16,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 1,
+          "episode": 8,
+          "watched_at": "2026-11-07T16:59:00+00:00"
+        },
+        "furthest": {
+          "season": 2,
+          "episode": 8,
+          "watched_at": "2024-10-04T14:23:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:37+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 169972,
+      "title": "3 Body Problem",
+      "year": 2024,
+      "url": "https://trakt.tv/shows/3-body-problem",
+      "progress": {
+        "aired": 8,
+        "watched": 8,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 1,
+          "episode": 8,
+          "watched_at": "2024-03-25T21:30:00+00:00"
+        },
+        "furthest": {
+          "season": 1,
+          "episode": 8,
+          "watched_at": "2024-03-25T21:30:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:38+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 205398,
+      "title": "Rivals",
+      "year": 2024,
+      "url": "https://trakt.tv/shows/rivals-2024",
+      "progress": {
+        "aired": 14,
+        "watched": 14,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 2,
+          "episode": 6,
+          "watched_at": "2026-06-17T11:45:00+00:00"
+        },
+        "furthest": {
+          "season": 2,
+          "episode": 6,
+          "watched_at": "2026-06-17T11:45:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:38+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 203632,
+      "title": "Star Trek: Starfleet Academy",
+      "year": 2026,
+      "url": "https://trakt.tv/shows/star-trek-starfleet-academy",
+      "progress": {
+        "aired": 10,
+        "watched": 10,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 1,
+          "episode": 10,
+          "watched_at": "2026-03-12T13:49:00+00:00"
+        },
+        "furthest": {
+          "season": 1,
+          "episode": 10,
+          "watched_at": "2026-03-12T13:49:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:38+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 162206,
+      "title": "Star Trek: Strange New Worlds",
+      "year": 2022,
+      "url": "https://trakt.tv/shows/star-trek-strange-new-worlds",
+      "progress": {
+        "aired": 40,
+        "watched": 30,
+        "aired_unwatched": 10,
+        "recent": {
+          "season": 3,
+          "episode": 10,
+          "watched_at": "2025-09-11T12:49:00+00:00"
+        },
+        "furthest": {
+          "season": 3,
+          "episode": 10,
+          "watched_at": "2025-09-11T12:49:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-07T17:49:38+00:00",
+      "refresh_failed": false
+    }
+  ]
+}

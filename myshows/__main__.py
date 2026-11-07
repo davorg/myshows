@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 
 from .dashboard import export_dashboard
 from .progress import display, overview
+from .snapshot import load_snapshot, write_snapshot
 from .state import AppError, Cache, State
 from .status import DEFAULT_STATUSES, load_statuses
 from .trakt import Trakt
@@ -42,18 +43,30 @@ def main(argv=None):
     commands.add_parser("auth", help="Authorize via Trakt's device-code flow.")
     commands.add_parser("whoami", help="Fetch and verify the connected account.")
     commands.add_parser("lists", help="List your custom lists and their IDs.")
-    for name in ("sync", "report", "build"):
+    for name in ("sync", "report", "snapshot", "build"):
         descriptions = {"sync": "Refresh progress.", "report": "Read cached progress without network access.",
+                        "snapshot": "Save a public watchlist snapshot for GitHub Actions.",
                         "build": "Build a public static dashboard from cached progress."}
         command = commands.add_parser(name, help=descriptions[name])
-        command.add_argument("--list", required=True, dest="list_id", help="Trakt custom list ID or slug.")
         if name == "build":
+            inputs = command.add_mutually_exclusive_group(required=True)
+            inputs.add_argument("--list", dest="list_id", help="Trakt custom list ID or slug from the local cache.")
+            inputs.add_argument("--snapshot", help="Public watchlist JSON; requires no credentials or cache.")
             command.add_argument("--output", default="site/dist", help="Public output directory (default: site/dist).")
             command.add_argument("--statuses", default=str(DEFAULT_STATUSES), help="Sourced status JSON file.")
         else:
-            command.add_argument("--json", action="store_true", help="Print structured output.")
+            command.add_argument("--list", required=True, dest="list_id", help="Trakt custom list ID or slug.")
+            if name == "snapshot":
+                command.add_argument("--output", default="data/watchlist.json", help="Public snapshot file (default: data/watchlist.json).")
+            else:
+                command.add_argument("--json", action="store_true", help="Print structured output.")
     args = parser.parse_args(argv)
     try:
+        if args.command == "build" and args.snapshot:
+            report = load_snapshot(args.snapshot)
+            snapshot = export_dashboard(report, args.output, args.state_dir, load_statuses(args.statuses))
+            print(f"Built public dashboard with {len(snapshot['shows'])} shows in {args.output}.")
+            return 0
         state = State(args.state_dir)
         with state.lock():
             if args.command == "configure":
@@ -88,7 +101,7 @@ def main(argv=None):
             else:
                 account = credentials.get("account")
                 if not account:
-                    if args.command in ("report", "build"):
+                    if args.command in ("report", "snapshot", "build"):
                         raise AppError("No verified account cached. Run auth or whoami first.")
                     account = client.identity()
                 cache = Cache(state, credentials["client_id"] + ":" + account["slug"])
@@ -99,6 +112,9 @@ def main(argv=None):
                 if args.command == "build":
                     snapshot = export_dashboard(report, args.output, state.directory, load_statuses(args.statuses))
                     print(f"Built public dashboard with {len(snapshot['shows'])} shows in {args.output}.")
+                elif args.command == "snapshot":
+                    snapshot = write_snapshot(report, args.output, state.directory)
+                    print(f"Saved public snapshot with {len(snapshot['shows'])} shows to {args.output}.")
                 elif args.json:
                     print(json.dumps(report, indent=2, ensure_ascii=False))
                 else:
