@@ -13,6 +13,7 @@ from .snapshot import load_snapshot, write_snapshot
 from .state import AppError, Cache, State
 from .status import DEFAULT_STATUSES, load_statuses
 from .trakt import Trakt
+from .maintenance import add_commands, run_command
 
 
 def valid_redirect_uri(uri):
@@ -43,6 +44,7 @@ def main(argv=None):
     commands.add_parser("auth", help="Authorize via Trakt's device-code flow.")
     commands.add_parser("whoami", help="Fetch and verify the connected account.")
     commands.add_parser("lists", help="List your custom lists and their IDs.")
+    add_commands(commands)
     for name in ("sync", "report", "snapshot", "build"):
         descriptions = {"sync": "Refresh progress.", "report": "Read cached progress without network access.",
                         "snapshot": "Save a public watchlist snapshot for GitHub Actions.",
@@ -62,6 +64,8 @@ def main(argv=None):
                 command.add_argument("--json", action="store_true", help="Print structured output.")
     args = parser.parse_args(argv)
     try:
+        if args.command in {"refresh-shows", "refresh-production", "rebuild-site"}:
+            return run_command(args)
         if args.command == "build" and args.snapshot:
             report = load_snapshot(args.snapshot)
             snapshot = export_dashboard(report, args.output, args.state_dir, load_statuses(args.statuses))

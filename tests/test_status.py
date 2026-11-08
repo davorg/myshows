@@ -73,9 +73,9 @@ class StatusTests(unittest.TestCase):
             self.assertEqual(status["lead"]["checked_on"], "2026-11-07")
             self.assertEqual(status["lead"]["headline"], value["shows"]["123"]["facts"][0]["headline"])
 
-    def test_checked_in_records_have_evidence_for_each_current_show(self):
+    def test_checked_in_records_have_valid_evidence_without_a_fixed_watchlist(self):
         statuses = load_statuses()
-        self.assertEqual(set(statuses), {"180770", "154997", "206790", "150900", "169972", "205398", "203632", "162206"})
+        self.assertTrue(statuses)
         self.assertEqual(statuses["206790"]["lead"]["confidence"], "reported")
         self.assertEqual(statuses["169972"]["lead"]["release"]["precision"], "year")
         self.assertEqual(statuses["205398"]["lead"]["season"], 2)

@@ -315,6 +315,138 @@
           ]
         }
       ]
+    },
+    "204141": {
+      "lead": "aknights7k-s2-release-2027",
+      "facts": [
+        {
+          "id": "aknights7k-s2-release-2027",
+          "kind": "release",
+          "season": 2,
+          "headline": "Season 2 is expected in the first half of 2027.",
+          "detail": "Radio Times reported HBO's first-half 2027 return window. No exact premiere date was announced; UK timing remains unverified.",
+          "confidence": "reported",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "Radio Times",
+              "url": "https://www.radiotimes.com/tv/fantasy/knight-of-the-seven-kingdoms-season-2-release-window-confirmed-newsupdate/",
+              "published_on": "2026-09-17"
+            }
+          ],
+          "release": {
+            "precision": "window",
+            "value": "First half of 2027",
+            "region": "United States"
+          }
+        },
+        {
+          "id": "aknights7k-s2-filming-wrapped-2026",
+          "kind": "production",
+          "season": 2,
+          "headline": "Season 2 reportedly finished filming in August 2026.",
+          "detail": "Radio Times reported that filming wrapped in August, following weather-related production interruptions.",
+          "confidence": "reported",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "Radio Times",
+              "url": "https://www.radiotimes.com/tv/fantasy/knight-of-the-seven-kingdoms-season-2-release-window-confirmed-newsupdate/",
+              "published_on": "2026-09-17"
+            }
+          ]
+        },
+        {
+          "id": "aknights7k-s2-renewal-2025",
+          "kind": "renewal",
+          "season": 2,
+          "headline": "HBO renewed the series for Season 2.",
+          "detail": "Casey Bloys announced the renewal on November 20, 2025, before the first season premiered.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "TVLine",
+              "url": "https://www.tvline.com/2031515/a-knight-of-the-seven-kingdoms-renewed-season-2-hbo/",
+              "published_on": "2025-11-20"
+            }
+          ]
+        }
+      ]
+    },
+    "154574": {
+      "lead": "season-4-release-2028",
+      "facts": [
+        {
+          "id": "season-4-release-2028",
+          "kind": "release",
+          "season": 4,
+          "headline": "Season 4 is slated for 2028",
+          "detail": "HBO announced a 2028 return without an exact premiere date. UK timing is unverified.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "TVLine",
+              "url": "https://www.tvline.com/2031776/house-of-the-dragon-renewed-season-4-hbo/",
+              "published_on": "2025-11-20"
+            }
+          ],
+          "release": {
+            "precision": "year",
+            "value": "2028",
+            "region": "US"
+          }
+        },
+        {
+          "id": "season-4-renewal",
+          "kind": "renewal",
+          "season": 4,
+          "headline": "HBO renewed the series for Season 4",
+          "detail": "Casey Bloys announced the renewal at HBO's November 20, 2025 press presentation.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "TVLine",
+              "url": "https://www.tvline.com/2031776/house-of-the-dragon-renewed-season-4-hbo/",
+              "published_on": "2025-11-20"
+            }
+          ]
+        },
+        {
+          "id": "season-4-final-season",
+          "kind": "outcome",
+          "season": 4,
+          "headline": "Season 4 will conclude the series",
+          "detail": "On January 30, 2026, HBO chief Casey Bloys confirmed the fourth season as the planned ending, rather than a cancellation.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "TVLine",
+              "url": "https://www.tvline.com/2089315/house-of-the-dragon-ending-final-season-4-hbo/",
+              "published_on": "2026-01-30"
+            }
+          ]
+        },
+        {
+          "id": "season-4-filming-planned-spring-2027",
+          "kind": "production",
+          "season": 4,
+          "headline": "Filming is planned for spring 2027",
+          "detail": "In September 2026, Olivia Cooke said filming would start the following spring. This describes a planned start, not filming already underway.",
+          "confidence": "reported",
+          "checked_on": "2026-11-08",
+          "sources": [
+            {
+              "name": "Radio Times",
+              "url": "https://www.radiotimes.com/tv/fantasy/house-of-the-dragon-season-4-production-update-newsupdate/",
+              "published_on": "2026-09-15"
+            }
+          ]
+        }
+      ]
     }
   }
 }

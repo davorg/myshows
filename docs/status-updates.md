@@ -1,6 +1,6 @@
 # Sourced show statuses
 
-Renewal, production and release information is a core MVP requirement. The owner approved a small file of sourced updates because metadata APIs do not cover all these facts. `data/statuses.json` currently contains researched assertions for all eight shows in the real Trakt Following list. A newly followed show with no matching record displays **Status unknown**, without falling back to made-up information.
+Renewal, production and release information is a core MVP requirement. The owner approved a small file of sourced updates because metadata APIs do not cover all these facts. `data/statuses.json` contains researched assertions matched to the real Trakt Following list. A newly followed show with no matching record displays **Status unknown**, without falling back to made-up information.
 
 ## Data model
 
@@ -40,7 +40,7 @@ Only advance `checked_on` after reviewing the evidence. Editing styling, syncing
 
 `myshows/status.py` validates the file and allowlists its public fields. Missing evidence, bad dates, unsupported precision, duplicate fact IDs and unknown lead IDs reject the build before changing the exported page. A missing/unreadable file also fails the build instead of silently removing every status. Select a different file with `build --statuses /path/to/statuses.json`.
 
-Research is manual for this MVP. `sync` refreshes watched history only; `build` reads existing local data without calling news sites. The public page has no editorial write endpoint. Later API integrations should populate the same assertion model, preserving provenance and uncertainty.
+`scripts/refresh-production` can research announcements through the OpenAI API and populate this same assertion model, with validated source URLs and last-good-value preservation. See [the maintenance guide](maintenance.md) for credentials, costs, show selection and review. Manual editing remains supported. `sync` refreshes watched history only; `build` and `scripts/rebuild-site` read existing local data without calling news sites. The public page has no editorial write endpoint.
 
 ## Initial research
 

@@ -65,6 +65,16 @@ A renewal flag is not the same as a filming date; a series finale is not necessa
 
 ## Development
 
+For routine maintenance, the three independent utilities are:
+
+```sh
+scripts/refresh-shows       # Refresh Trakt Following and public watched progress
+scripts/refresh-production  # Research sourced statuses via the OpenAI API (billable)
+scripts/rebuild-site        # Rebuild saved data into the static website, offline
+```
+
+The research command needs a local `OPENAI_API_KEY`. Use `--dry-run` to preview or `--missing-only` to research newly followed shows. See [the maintenance guide](docs/maintenance.md) for setup, selections, costs, failure handling and publication. TMDB was tested against the live list; its broad series status does not provide the filming/post-production detail needed for the dashboard.
+
 The [Trakt prototype setup guide](docs/trakt-prototype.md) covers app registration, local authorization, list selection and cached progress reports. It runs with Python 3.11+ on Linux/macOS and has no third-party dependencies:
 
 ```sh
@@ -91,12 +101,12 @@ Investigate Trakt access ([#3](https://github.com/davorg/myshows/issues/3)) and 
 
 The public test is hosted at [davorg.dev/myshows](https://davorg.dev/myshows/). The [Pages workflow](.github/workflows/pages.yml) tests pull requests and deploys pushes to `main` or manual runs. It builds from the committed, public [watchlist snapshot](data/watchlist.json) and sourced status file, with no Trakt credentials or SQLite database in Actions. The published page has no refresh or configuration endpoint.
 
-SQLite persists the latest successfully retrieved information locally. `snapshot --list following` exports only public viewing-progress fields to `data/watchlist.json`; commit and push that file to publish updated progress. Status updates are researched separately in `data/statuses.json`. Firebase remains an option if later requirements need a hosted database. Refresh failures preserve original successful-update timestamps and values; an explicitly empty successful response is distinct from an unsuccessful retrieval.
+SQLite persists the latest successfully retrieved Trakt information locally. `scripts/refresh-shows` refreshes it and exports public viewing-progress fields to `data/watchlist.json`; commit and push that file to publish updated progress. `scripts/refresh-production` researches sourced assertions in `data/statuses.json`, retaining previous successful facts on failure. Firebase remains an option if later requirements need a hosted database. Refresh failures preserve original successful-update timestamps and values; an explicitly empty successful response is distinct from an unsuccessful retrieval.
 
-The command-line integration has automated tests using synthetic API responses. The owner has also confirmed successful live authentication, custom-list retrieval and viewing progress against their Trakt account. Metadata and UK availability providers remain to be evaluated.
+The command-line integration has automated tests using synthetic API responses. The owner has also confirmed successful live authentication, custom-list retrieval and viewing progress against their Trakt account. Initial TMDB coverage has been checked; the wider metadata comparison and UK availability investigation remain open.
 
 ## Status
 
-The owner has verified the live Trakt integration. The public dashboard includes all eight currently followed shows, sourced status headlines, progress, aired-unwatched counts, search, progress/status filters and sorting. Its modernist layout uses sans-serif typography, flat colour blocks and bold headings. GitHub Actions tests and publishes changes automatically; Trakt refresh and editorial research remain manual. Automated metadata and UK streaming integration remain future work.
+The owner has verified the live Trakt integration. The dashboard reads the curated Following list and includes sourced status headlines, progress, aired-unwatched counts, search, progress/status filters and sorting. Its modernist layout uses sans-serif typography, flat colour blocks and bold headings. GitHub Actions tests and publishes changes automatically. Local utilities refresh Trakt, research production announcements and rebuild the website independently; refresh scheduling and UK streaming integration remain future work.
 
 My Shows uses Trakt but is not endorsed or certified by Trakt.

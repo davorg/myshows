@@ -1,6 +1,6 @@
 # Dashboard
 
-The public snapshot is live at [My Shows](https://davorg.dev/myshows/). It uses eight real shows from the owner's cached Trakt list, plus dated, sourced status updates. There is no sample-show fallback and no live Trakt/news access from the browser.
+The public snapshot is live at [My Shows](https://davorg.dev/myshows/). It uses real shows from the owner's Trakt list, plus dated, sourced status updates. There is no sample-show fallback and no live Trakt/news access from the browser.
 
 ## Build and preview
 
@@ -34,12 +34,12 @@ Freshness is evaluated when the page opens. Watched information checked more tha
 ## Refresh the snapshot
 
 ```sh
-python3 -m myshows sync --list following
-python3 -m myshows snapshot --list following
-python3 -m myshows build --snapshot data/watchlist.json
+scripts/refresh-shows
+scripts/refresh-production
+scripts/rebuild-site
 ```
 
-Run `snapshot` after a failed `sync` when you want to publish retained data with failure indicators. These are separate commands deliberately: a refresh error must not prevent exporting useful cached values. Review and commit `data/watchlist.json`, then push to `main`; Actions rebuilds and publishes the page. `snapshot` only reads local cache and preserves original success/error dates. There is no scheduled Trakt refresh, and a visitor cannot trigger refresh or publication.
+The [maintenance guide](maintenance.md) explains each independent operation, the OpenAI API key and research charges, selections and failure handling. `refresh-shows` saves retained data with failure indicators even after a partial Trakt failure; the lower-level `sync` and offline `snapshot` commands also remain available separately. Review and commit `data/watchlist.json` and `data/statuses.json`, then push to `main`; Actions rebuilds and publishes the page. There is no scheduled refresh, and a visitor cannot trigger refresh or publication.
 
 `build` also reads `data/statuses.json`. Research and edit that file separately to refresh status information; Trakt sync does not check those sources. Unknown shows remain unknown, and invalid status data aborts the build before replacing the previous export.
 
@@ -61,7 +61,7 @@ No DNS changes are needed for the GitHub Pages project URL. The old Sites CNAME/
 
 ## Validation
 
-The Python suite currently passes 44 tests, including status evidence/precision validation, stable-ID matching, independent release/ending facts, public-field allowlisting, HTML/script injection prevention, cached/unknown progress, offline building and output-directory protection. JavaScript syntax and Python compilation checks pass.
+The Python suite covers status evidence/precision validation, stable-ID matching, independent release/ending facts, public-field allowlisting, HTML/script injection prevention, cached/unknown progress, offline building and output-directory protection. Maintenance tests also cover research-source validation, request privacy, partial failures and last-good-value preservation. JavaScript syntax and Python compilation checks pass.
 
 Chromium checks at 1440, 1024, 768, 390 and 320 pixels confirm that all eight statuses and sources render without horizontal overflow; search, status filters, sorting, details and empty states work; and the page makes no external requests. A future-date check confirms that passed announcements and old evidence are flagged without inferring availability. Desktop and mobile screenshots were inspected. Browser tooling is temporary under `/tmp`, not a project dependency.
 
