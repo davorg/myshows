@@ -94,3 +94,16 @@ def load_statuses(path=DEFAULT_STATUSES):
     except (OSError, ValueError):
         raise AppError("Unable to read the sourced status file; the existing dashboard was preserved.") from None
     return validate_statuses(document)
+
+
+def display_status(record=None, today=None):
+    """Give imminent confirmed releases priority without changing the underlying facts."""
+    if record is None:
+        return {"lead": None, "facts": []}
+    today = today or date.today()
+    releases = [fact for fact in record["facts"]
+                if fact["kind"] == "release" and fact["confidence"] == "confirmed"
+                and fact["release"]["precision"] == "day"
+                and 0 <= (date.fromisoformat(fact["release"]["value"]) - today).days <= 30]
+    lead = min(releases, key=lambda fact: (fact["release"]["value"], fact["season"], fact["id"])) if releases else record["lead"]
+    return {"lead": lead, "facts": record["facts"]}

@@ -1,6 +1,6 @@
 from contextlib import redirect_stderr, redirect_stdout
 from copy import deepcopy
-from datetime import date
+from datetime import date, timedelta
 from io import BytesIO, StringIO
 import json
 from pathlib import Path
@@ -169,6 +169,24 @@ class MaintenanceTests(unittest.TestCase):
         self.assertEqual(saved["shows"]["123"]["facts"][0]["checked_on"], date.today().isoformat())
         self.assertEqual(saved["shows"]["456"], original["shows"]["456"])
         self.assertEqual(json.loads((self.state / "statuses-before-refresh.json").read_text()), original)
+
+    def test_refresh_prioritises_retained_imminent_release_over_new_later_season_work(self):
+        original = document()
+        original["shows"]["123"]["facts"][0].update(season=3, headline="Season 3 premieres in three days", release={
+            "precision": "day", "value": (date.today() + timedelta(days=3)).isoformat(), "region": "UK"})
+        self.statuses.write_text(json.dumps(original))
+        production = deepcopy(original["shows"]["123"]["facts"][1])
+        production.update(id="development", kind="production", season=4, headline="Season 4 in development",
+                          checked_on=date.today().isoformat())
+        with patch("myshows.maintenance.Researcher") as cls:
+            cls.return_value.research.return_value = {"lead": "development", "facts": [production]}
+            self.assertEqual(self.research(), 0)
+        saved = json.loads(self.statuses.read_text())["shows"]["123"]
+        self.assertEqual(saved["lead"], "release")
+        self.assertIn("Saved: Season 3 premieres in three days", self.output.getvalue())
+        retained = next(f for f in saved["facts"] if f["id"] == "release")
+        self.assertEqual(retained["checked_on"], original["shows"]["123"]["facts"][0]["checked_on"])
+        self.assertTrue(any(f["season"] == 4 and f["kind"] == "production" for f in saved["facts"]))
 
     def test_unknown_and_invalid_evidence_preserve_previous_file_byte_for_byte(self):
         original = self.statuses.read_bytes()

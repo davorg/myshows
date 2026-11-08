@@ -8,6 +8,7 @@ import tempfile
 from urllib.parse import urlsplit
 
 from .state import AppError
+from .status import display_status
 
 ASSETS = Path(__file__).with_name("web")
 PUBLIC_FILES = {"index.html", "dashboard.css", "dashboard.js", "robots.txt"}
@@ -54,7 +55,7 @@ def public_snapshot(report, statuses=None):
         shows.append({"title": show["title"], "year": show.get("year"), "url": url,
                       "progress": progress, "checked_at": public_time(stored["last_success_at"]),
                       "refresh_failed": bool(stored["error"]),
-                      "status": (statuses or {}).get(str(show["ids"]["trakt"]), {"lead": None, "facts": []})})
+                      "status": display_status((statuses or {}).get(str(show["ids"]["trakt"])))})
     return {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "list_checked_at": public_time(listing["last_success_at"]),
             "list_refresh_failed": bool(listing["error"]), "shows": shows}

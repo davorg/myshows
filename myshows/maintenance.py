@@ -11,7 +11,7 @@ from .production import DEFAULT_MODEL, Researcher, ProviderError
 from .progress import overview, segment
 from .snapshot import load_snapshot, write_snapshot
 from .state import AppError, Cache, State
-from .status import DEFAULT_STATUSES, load_statuses, validate_statuses
+from .status import DEFAULT_STATUSES, display_status, load_statuses, validate_statuses
 from .storage import write_json
 from .trakt import API_URL, Trakt
 
@@ -156,11 +156,14 @@ def refresh_production(args):
                     continue
                 updated = deepcopy(document)
                 updated["shows"][identifier] = merge_record(document["shows"].get(identifier), record)
-                validate_statuses(updated)
+                validated = validate_statuses(updated)
+                # A later season's research must not hide an imminent release retained from earlier checks.
+                updated["shows"][identifier]["lead"] = display_status(validated[identifier])["lead"]["id"]
                 # Save each success: a later failure or interruption cannot lose it.
                 write_json(args.statuses, updated)
                 document = updated
-                print(f"  Saved: {next(f['headline'] for f in record['facts'] if f['id'] == record['lead'])}")
+                saved = updated["shows"][identifier]
+                print(f"  Saved: {next(f['headline'] for f in saved['facts'] if f['id'] == saved['lead'])}")
             except AppError as exc:
                 failed = True
                 print(f"  {exc} Previous facts and dates retained.", file=sys.stderr)

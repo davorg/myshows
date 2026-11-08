@@ -139,7 +139,7 @@
       ]
     },
     "150900": {
-      "lead": "s4-development",
+      "lead": "s3-release",
       "facts": [
         {
           "id": "s4-development",
@@ -161,7 +161,7 @@
           "id": "s3-release",
           "kind": "release",
           "season": 3,
-          "headline": "Season 3: 11 November",
+          "headline": "Season 3: first four episodes on 11 November",
           "detail": "The new season opens with four episodes. Amazon also confirms the November return in its UK announcement.",
           "confidence": "confirmed",
           "checked_on": "2026-11-07",

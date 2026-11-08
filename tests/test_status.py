@@ -4,10 +4,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from myshows.dashboard import public_snapshot, export_dashboard
 from myshows.state import AppError
-from myshows.status import load_statuses, validate_statuses
+from myshows.status import display_status, load_statuses, validate_statuses
 from test_dashboard import report, SnapshotParser
 
 
@@ -24,6 +25,67 @@ def document():
 
 
 class StatusTests(unittest.TestCase):
+    def forthcoming_release(self):
+        value = document()
+        record = value["shows"]["123"]
+        record["facts"][0].update(season=3, headline="Season 3: first episodes on 11 November",
+                                   release={"precision": "day", "value": "2026-11-11", "region": "UK"})
+        record["facts"][1].update(kind="production", season=4, headline="Season 4 development reported")
+        record["lead"] = "ending"
+        return validate_statuses(value)["123"]
+
+    def test_imminent_release_beats_later_season_production_without_changing_evidence(self):
+        record = self.forthcoming_release()
+        original = deepcopy(record)
+        display = display_status(record, today=date(2026, 11, 8))
+        self.assertEqual(display["lead"]["id"], "release")
+        self.assertEqual(display["lead"]["season"], 3)
+        self.assertEqual(display["facts"][1]["season"], 4)
+        self.assertEqual(record, original)
+        self.assertEqual(display["facts"], original["facts"])
+
+    def test_release_priority_includes_today_and_thirty_days_but_not_past_or_distant_dates(self):
+        today = date(2026, 11, 8)
+        for offset, expected in ((-1, "ending"), (0, "release"), (30, "release"), (31, "ending")):
+            record = self.forthcoming_release()
+            record["facts"][0]["release"]["value"] = (today + timedelta(days=offset)).isoformat()
+            with self.subTest(offset=offset):
+                self.assertEqual(display_status(record, today=today)["lead"]["id"], expected)
+
+    def test_reported_or_imprecise_dates_do_not_override_the_editorial_lead(self):
+        for precision, value in (("month", "2026-11"), ("year", "2026"), ("window", "Autumn 2026")):
+            record = self.forthcoming_release()
+            record["facts"][0]["release"].update(precision=precision, value=value)
+            with self.subTest(precision=precision):
+                self.assertEqual(display_status(record, today=date(2026, 11, 8))["lead"]["id"], "ending")
+                self.assertEqual(record["facts"][0]["release"]["value"], value)
+        record = self.forthcoming_release()
+        record["facts"][0]["confidence"] = "reported"
+        self.assertEqual(display_status(record, today=date(2026, 11, 8))["lead"]["id"], "ending")
+
+    def test_earliest_imminent_release_wins_and_unknown_stays_unknown(self):
+        record = self.forthcoming_release()
+        earlier = deepcopy(record["facts"][0])
+        earlier.update(id="earlier", season=2)
+        earlier["release"]["value"] = "2026-11-10"
+        record["facts"].append(earlier)
+        self.assertEqual(display_status(record, today=date(2026, 11, 8))["lead"]["id"], "earlier")
+        self.assertEqual(display_status(), {"lead": None, "facts": []})
+
+    def test_export_promotes_release_even_if_saved_research_selected_later_production(self):
+        record = self.forthcoming_release()
+        with tempfile.TemporaryDirectory() as temporary, patch("myshows.dashboard.display_status", side_effect=lambda r: display_status(r, today=date(2026, 11, 8))):
+            root = Path(temporary)
+            export_dashboard(report(), root / "public", root / "private", {"123": record})
+            parser = SnapshotParser()
+            parser.feed((root / "public/index.html").read_text())
+            status = json.loads(parser.data)["shows"][0]["status"]
+        self.assertEqual(status["lead"]["season"], 3)
+        self.assertEqual(status["lead"]["kind"], "release")
+        self.assertEqual(len(status["facts"]), 2)
+        self.assertEqual(status["lead"]["checked_on"], "2026-11-07")
+        self.assertEqual(record["lead"]["season"], 4)
+
     def test_independent_ending_and_release_survive_export(self):
         statuses = validate_statuses(document())
         public = public_snapshot(report(), statuses)["shows"][0]["status"]
