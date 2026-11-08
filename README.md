@@ -47,6 +47,8 @@ No real-time notifications, no replacement for Trakt's watched-history managemen
 
 A renewal flag is not the same as a filming date; a series finale is not necessarily a cancellation. The interface should make these distinctions clear.
 
+The [structured production-data investigation](docs/production-data-providers.md) compares Production List's API/MCP, Luminate and IMDb, including live sample lookups, season matching, published prices and licensing questions for a larger shared catalogue.
+
 ### Data interpretation
 
 - **Viewing progress:** distinguish the most recently watched episode from the furthest episode watched; rewatches and gaps can make these different. Define whether specials are included in counts.

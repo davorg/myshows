@@ -64,3 +64,5 @@ Those are useful structured metadata fields, but the observed series-level produ
 TMDB remains a candidate for supplementary metadata and licensed UK provider information. Its API is [free for non-commercial use with required attribution](https://developer.themoviedb.org/docs/faq); production use would need the approved logo and notice. It is not currently a runtime dependency. The wider TVmaze/TMDB comparison in [issue #6](https://github.com/davorg/myshows/issues/6), including all reference shows, terms and quotas, remains open.
 
 The research integration follows OpenAI's official [web-search](https://developers.openai.com/api/docs/guides/tools-web-search) and [structured-output](https://developers.openai.com/api/docs/guides/structured-outputs) documentation.
+
+Structured production providers do exist beyond TMDB. See [the provider investigation](production-data-providers.md) for Production List's API/MCP, Luminate and IMDb. These remain evaluation candidates; the current refresh utility still uses OpenAI research.
