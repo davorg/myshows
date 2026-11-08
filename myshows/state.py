@@ -81,6 +81,13 @@ class Cache:
     def close(self):
         self.db.close()
 
+    def seed(self, key, data, source, last_success_at, error=None):
+        """Restore a validated fallback without replacing newer local state."""
+        with self.db:
+            self.db.execute("""INSERT OR IGNORE INTO responses VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                            (self.account, key, json.dumps(data) if data is not None else None,
+                             source, last_success_at, last_success_at, error))
+
     def read(self, key):
         self.db.row_factory = sqlite3.Row
         row = self.db.execute(

@@ -13,7 +13,7 @@ from .state import AppError
 from .status import validate_statuses
 from .trakt import NoRedirect
 
-DEFAULT_MODEL = "gpt-6-astra"
+DEFAULT_MODEL = "gpt-6.1-sol"
 
 def object_schema(properties):
     return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}

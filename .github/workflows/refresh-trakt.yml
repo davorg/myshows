@@ -1,0 +1,70 @@
+name: Refresh Trakt progress
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 */6 * * *' # 00:41, 06:41, 12:41 and 18:41 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Environment secrets load when this serialized job starts, after prior rotations.
+    environment: trakt-refresh
+    concurrency:
+      group: source-data-refresh
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - name: Check out main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - name: Check Trakt setup
+        id: setup
+        env:
+          TRAKT_CREDENTIALS_JSON: ${{ secrets.TRAKT_CREDENTIALS_JSON }}
+          TRAKT_SECRET_UPDATE_TOKEN: ${{ secrets.TRAKT_SECRET_UPDATE_TOKEN }}
+        run: |
+          if [ -z "$TRAKT_CREDENTIALS_JSON" ] || [ -z "$TRAKT_SECRET_UPDATE_TOKEN" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              echo "::error::Set TRAKT_CREDENTIALS_JSON and TRAKT_SECRET_UPDATE_TOKEN in the trakt-refresh environment. See docs/maintenance.md."
+              exit 1
+            fi
+            echo "::notice::Trakt refresh is waiting for its environment secrets. See docs/maintenance.md."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Refresh Following and watched progress
+        id: trakt
+        if: steps.setup.outputs.ready == 'true'
+        continue-on-error: true
+        env:
+          TRAKT_CREDENTIALS_JSON: ${{ secrets.TRAKT_CREDENTIALS_JSON }}
+          TRAKT_SECRET_UPDATE_TOKEN: ${{ secrets.TRAKT_SECRET_UPDATE_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          MYSHOWS_STATE_DIR: ${{ runner.temp }}/myshows-trakt
+        run: python -m myshows.github_trakt
+      - name: Publish changed progress and rebuild the website
+        if: steps.setup.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: .github/scripts/publish-refresh.sh data/watchlist.json
+      - name: Report incomplete Trakt refresh
+        if: steps.trakt.outcome == 'failure'
+        run: |
+          echo "::error::Some Trakt requests failed. Previous successful progress was retained; review the refresh step."
+          exit 1

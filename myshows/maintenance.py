@@ -8,12 +8,12 @@ import sys
 
 from .dashboard import export_dashboard
 from .production import DEFAULT_MODEL, Researcher, ProviderError
-from .progress import overview
+from .progress import overview, segment
 from .snapshot import load_snapshot, write_snapshot
 from .state import AppError, Cache, State
 from .status import DEFAULT_STATUSES, load_statuses, validate_statuses
 from .storage import write_json
-from .trakt import Trakt
+from .trakt import API_URL, Trakt
 
 
 def positive(value):
@@ -54,7 +54,26 @@ def run_command(args):
         return 0
     if args.command == "refresh-production":
         return refresh_production(args)
-    state = State(args.state_dir)
+    return refresh_shows(args)
+
+
+def seed_progress(cache, report, list_id):
+    """Restore public fallback values on an ephemeral Actions runner."""
+    if not report["list"].get("last_success_at"):
+        return
+    items = [{"type": "show", "show": {"title": s["title"], "year": s["year"],
+              "ids": {**s["ids"], "slug": s["url"].rsplit("/", 1)[-1]}}} for s in report["shows"]]
+    cache.seed("list:" + list_id, items, API_URL + f"/users/me/lists/{segment(list_id)}/items/show",
+               report["list"]["last_success_at"], report["list"]["error"])
+    for show in report["shows"]:
+        stored = show["progress"]
+        cache.seed(f"progress:{show['ids']['trakt']}", stored["data"],
+                   API_URL + f"/shows/{show['ids']['trakt']}/progress/watched?hidden=true&specials=false",
+                   stored["last_success_at"], stored["error"])
+
+
+def refresh_shows(args, state=None, seed_from_snapshot=False):
+    state = state or State(args.state_dir)
     with state.lock():
         destination = Path(args.output)
         previous = load_snapshot(destination) if destination.exists() else {"shows": []}
@@ -63,6 +82,8 @@ def run_command(args):
         account = credentials.get("account") or client.identity()
         cache = Cache(state, credentials["client_id"] + ":" + account["slug"])
         try:
+            if seed_from_snapshot and destination.exists():
+                seed_progress(cache, previous, args.list_id)
             report = overview(client, cache, args.list_id)
         finally:
             cache.close()

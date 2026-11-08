@@ -39,7 +39,7 @@ scripts/refresh-production
 scripts/rebuild-site
 ```
 
-The [maintenance guide](maintenance.md) explains each independent operation, the OpenAI API key and research charges, selections and failure handling. `refresh-shows` saves retained data with failure indicators even after a partial Trakt failure; the lower-level `sync` and offline `snapshot` commands also remain available separately. Review and commit `data/watchlist.json` and `data/statuses.json`, then push to `main`; Actions rebuilds and publishes the page. There is no scheduled refresh, and a visitor cannot trigger refresh or publication.
+The [maintenance guide](maintenance.md) explains each independent operation, credentials and research charges, selections and failure handling. `refresh-shows` saves retained data with failure indicators even after a partial Trakt failure; the lower-level `sync` and offline `snapshot` commands also remain available separately. Local changes can be reviewed, committed and pushed to `main` for publication. Actions also provides a six-hourly Trakt refresh after environment-secret setup, and a weekly production refresh whose schedule remains commented out. Both rebuild and publish changed public data, including successful-check times. A visitor cannot trigger refresh or publication.
 
 `build` also reads `data/statuses.json`. Research and edit that file separately to refresh status information; Trakt sync does not check those sources. Unknown shows remain unknown, and invalid status data aborts the build before replacing the previous export.
 
@@ -51,7 +51,7 @@ Actions are pinned to verified commit SHAs. Build jobs have read-only repository
 
 The repository's Pages source is **GitHub Actions** (`build_type: workflow`). The site inherits the account's existing `davorg.dev` domain, so the project URL is `https://davorg.dev/myshows/`. Do not add a repository `CNAME` file for `davorg.dev`; that domain belongs to the existing account site. Relative asset/home links work below `/myshows/` as well as in a local root preview.
 
-Publication happens automatically after a push. The Actions run and the `github-pages` environment report the deployment URL and failures. Trakt refresh and status research still need to be performed separately; a workflow rerun does not make source-check dates newer.
+Publication happens automatically after a user push. The Actions run and the `github-pages` environment report the deployment URL and failures. Both refresh workflows explicitly dispatch Pages after saving changed public data, because bot-token pushes do not trigger the push workflow. Rerunning Pages alone does not make source-check dates newer.
 
 ## Retired OpenAI Sites hosting
 

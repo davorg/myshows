@@ -108,6 +108,8 @@ class ResearchTests(unittest.TestCase):
         researcher = Researcher(api_key="secret-key", opener=transport)
         researcher.research(report()["shows"][0])
         payload = json.loads(transport.request.data)
+        self.assertEqual(payload["model"], "gpt-6.1-sol")
+        self.assertEqual(payload["reasoning"], {"effort": "low"})
         self.assertNotIn("private-", json.dumps(payload))
         self.assertNotIn("secret-key", json.dumps(payload))
         self.assertEqual(payload["tool_choice"], "required")

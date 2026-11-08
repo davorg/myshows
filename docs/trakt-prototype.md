@@ -64,7 +64,7 @@ The SQLite cache is scoped by Client ID and verified account slug. List contents
 
 `fresh` means verified during this sync, not a promise of real-time accuracy. `cached` means read offline without a new check; `stale` means a known refresh failed. Retention has no automatic age limit in this prototype. A nonzero exit status from `sync` indicates at least one failed retrieval even when a useful cached report was printed. `report` can be used without a valid access token as long as a verified account and cached data remain on disk.
 
-On ordinary HTTP 429 responses the command stops further network calls and prints the documented `Retry-After` delay when supplied; rerun after that delay. Device authorization handles pending responses, increases its polling interval after throttling, and stops on denial or expiry. Other source failures retain cached values. There is no unattended retry scheduler yet.
+On ordinary HTTP 429 responses the command stops further network calls and prints the documented `Retry-After` delay when supplied; rerun after that delay. Device authorization handles pending responses, increases its polling interval after throttling, and stops on denial or expiry. Other source failures retain cached values. A separate [six-hourly Actions workflow](maintenance.md#github-actions-trakt-refresh) can run unattended after its credential environment is configured; it does not retry failed requests within a run.
 
 If access is revoked or token refresh is rejected, run `auth` again. To disconnect, stop any scheduled commands and revoke the app in Trakt's connected-app settings. Remove the private state directory if you also want to erase local credentials and cached data. A newly authorized account does not read another account's cached rows.
 
@@ -80,7 +80,7 @@ Tests use synthetic fixtures and an in-memory HTTP transport, never real credent
 
 ## Initial technology decision
 
-Python's standard library supplies HTTPS, CLI parsing, SQLite, locking and tests, so this investigation needs no dependency installation or framework. SQLite provides persistent fallback locally. The dashboard is now hosted on GitHub Pages: `snapshot --list following` exports only public progress to `data/watchlist.json`, and GitHub Actions builds from that file without credentials or a database. Trakt authentication and refresh remain local; see the [dashboard guide](dashboard.md).
+Python's standard library supplies HTTPS, CLI parsing, SQLite, locking and tests, so this investigation needs no dependency installation or framework. SQLite provides persistent fallback locally. The dashboard is now hosted on GitHub Pages: `snapshot --list following` exports only public progress to `data/watchlist.json`, and GitHub Actions builds from that file without credentials or a database. A separate Trakt refresh job can use dedicated environment credentials, with GitHub CLI persistence for token rotation; see the [maintenance guide](maintenance.md#github-actions-trakt-refresh).
 
 ## API references
 

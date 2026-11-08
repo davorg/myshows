@@ -1,0 +1,58 @@
+name: Refresh production information
+
+on:
+  workflow_dispatch:
+  # Enable both lines after adding the OPENAI_API_KEY repository Actions secret.
+  # schedule:
+  #   - cron: '17 3 * * 1' # Mondays at 03:17 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    concurrency:
+      group: source-data-refresh
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - name: Check out main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - name: Check API secret
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::Add the OPENAI_API_KEY repository Actions secret before running production research."
+            exit 1
+          fi
+      - name: Research production updates
+        id: research
+        # The utility saves each success and retains old facts on failure.
+        # Validate and publish those successes, then report any partial failure.
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: scripts/refresh-production
+      - name: Publish changed statuses and rebuild the website
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: .github/scripts/publish-refresh.sh data/statuses.json
+      - name: Report incomplete research
+        if: steps.research.outcome == 'failure'
+        run: |
+          echo "::error::Some research failed. Validated successes were saved; failed shows retain their previous facts. Review the research step."
+          exit 1
