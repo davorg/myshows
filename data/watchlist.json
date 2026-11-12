@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "list_checked_at": "2026-11-11T18:44:56+00:00",
+  "list_checked_at": "2026-11-12T00:52:23+00:00",
   "list_refresh_failed": false,
   "shows": [
     {
@@ -24,7 +24,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:56+00:00",
+      "checked_at": "2026-11-12T00:52:23+00:00",
       "refresh_failed": false
     },
     {
@@ -48,7 +48,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:57+00:00",
+      "checked_at": "2026-11-12T00:52:23+00:00",
       "refresh_failed": false
     },
     {
@@ -72,7 +72,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:57+00:00",
+      "checked_at": "2026-11-12T00:52:23+00:00",
       "refresh_failed": false
     },
     {
@@ -82,21 +82,21 @@
       "url": "https://trakt.tv/shows/the-lord-of-the-rings-the-rings-of-power",
       "progress": {
         "aired": 20,
-        "watched": 16,
-        "aired_unwatched": 4,
+        "watched": 19,
+        "aired_unwatched": 1,
         "recent": {
-          "season": 2,
-          "episode": 8,
-          "watched_at": "2026-11-08T21:27:00+00:00"
+          "season": 3,
+          "episode": 3,
+          "watched_at": "2026-11-11T22:46:00+00:00"
         },
         "furthest": {
-          "season": 2,
-          "episode": 8,
-          "watched_at": "2026-11-08T21:27:00+00:00"
+          "season": 3,
+          "episode": 3,
+          "watched_at": "2026-11-11T22:46:00+00:00"
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:57+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -120,7 +120,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:57+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -144,7 +144,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:58+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -168,7 +168,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:58+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -192,7 +192,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:58+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -216,7 +216,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:58+00:00",
+      "checked_at": "2026-11-12T00:52:24+00:00",
       "refresh_failed": false
     },
     {
@@ -240,7 +240,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-11T18:44:58+00:00",
+      "checked_at": "2026-11-12T00:52:25+00:00",
       "refresh_failed": false
     }
   ]
