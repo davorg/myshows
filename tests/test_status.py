@@ -136,12 +136,24 @@ class StatusTests(unittest.TestCase):
             self.assertEqual(status["lead"]["headline"], value["shows"]["123"]["facts"][0]["headline"])
 
     def test_checked_in_records_have_valid_evidence_without_a_fixed_watchlist(self):
-        statuses = load_statuses()
-        self.assertTrue(statuses)
-        self.assertEqual(statuses["206790"]["lead"]["confidence"], "reported")
-        self.assertEqual(statuses["169972"]["lead"]["release"]["precision"], "year")
-        self.assertEqual(statuses["205398"]["lead"]["season"], 2)
-        self.assertTrue(any(f["kind"] == "renewal" and f["season"] == 3 for f in statuses["205398"]["facts"]))
+        # Loading validates every saved fact. Research can legitimately change
+        # the shows, headline seasons, confidence labels and release precision.
+        # Assertions about particular news belong in controlled fixtures.
+        load_statuses()
+
+    def test_later_season_can_become_lead_while_earlier_release_is_retained(self):
+        value = document()
+        record = value["shows"]["123"]
+        record["facts"][1].update(id="production", kind="production", season=3,
+                                   headline="Season 3 filming planned for March 2027",
+                                   detail="The next season has a reported filming window.")
+        record["lead"] = "production"
+
+        public = public_snapshot(report(), validate_statuses(value))["shows"][0]["status"]
+        self.assertEqual(public["lead"]["id"], "production")
+        self.assertEqual(public["lead"]["season"], 3)
+        self.assertEqual(public["lead"]["confidence"], "reported")
+        self.assertEqual(public["facts"][0], record["facts"][0])
 
     def test_unreadable_status_file_fails_instead_of_publishing_empty_updates(self):
         with tempfile.TemporaryDirectory() as temporary:
