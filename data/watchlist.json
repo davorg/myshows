@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "list_checked_at": "2026-11-18T18:45:05+00:00",
+  "list_checked_at": "2026-11-19T00:52:25+00:00",
   "list_refresh_failed": false,
   "shows": [
     {
@@ -24,7 +24,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:05+00:00",
+      "checked_at": "2026-11-19T00:52:25+00:00",
       "refresh_failed": false
     },
     {
@@ -48,7 +48,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:05+00:00",
+      "checked_at": "2026-11-19T00:52:25+00:00",
       "refresh_failed": false
     },
     {
@@ -72,7 +72,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:05+00:00",
+      "checked_at": "2026-11-19T00:52:25+00:00",
       "refresh_failed": false
     },
     {
@@ -96,7 +96,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:06+00:00",
+      "checked_at": "2026-11-19T00:52:26+00:00",
       "refresh_failed": false
     },
     {
@@ -120,7 +120,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:06+00:00",
+      "checked_at": "2026-11-19T00:52:26+00:00",
       "refresh_failed": false
     },
     {
@@ -130,21 +130,21 @@
       "url": "https://trakt.tv/shows/rivals-2024",
       "progress": {
         "aired": 18,
-        "watched": 14,
-        "aired_unwatched": 4,
+        "watched": 17,
+        "aired_unwatched": 1,
         "recent": {
           "season": 2,
-          "episode": 6,
-          "watched_at": "2026-06-17T11:45:00+00:00"
+          "episode": 9,
+          "watched_at": "2026-11-18T21:31:00+00:00"
         },
         "furthest": {
           "season": 2,
-          "episode": 6,
-          "watched_at": "2026-06-17T11:45:00+00:00"
+          "episode": 9,
+          "watched_at": "2026-11-18T21:31:00+00:00"
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:06+00:00",
+      "checked_at": "2026-11-19T00:52:26+00:00",
       "refresh_failed": false
     },
     {
@@ -168,7 +168,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:06+00:00",
+      "checked_at": "2026-11-19T00:52:26+00:00",
       "refresh_failed": false
     },
     {
@@ -192,7 +192,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:06+00:00",
+      "checked_at": "2026-11-19T00:52:27+00:00",
       "refresh_failed": false
     },
     {
@@ -216,7 +216,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:07+00:00",
+      "checked_at": "2026-11-19T00:52:27+00:00",
       "refresh_failed": false
     },
     {
@@ -240,7 +240,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-18T18:45:07+00:00",
+      "checked_at": "2026-11-19T00:52:27+00:00",
       "refresh_failed": false
     }
   ]
