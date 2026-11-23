@@ -74,7 +74,7 @@ class DashboardTests(unittest.TestCase):
         export_dashboard(value, output, self.root / "private")
         parser = SnapshotParser()
         parser.feed((output / "index.html").read_text())
-        self.assertEqual(len(parser.scripts), 2)
+        self.assertEqual(len(parser.scripts), 4)
         self.assertEqual(json.loads(parser.data)["shows"][0]["title"], title)
         self.assertEqual({p.name for p in output.iterdir()}, PUBLIC_FILES)
         self.assertNotIn("__MYSHOWS_DATA__", (output / "index.html").read_text())

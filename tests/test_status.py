@@ -130,7 +130,7 @@ class StatusTests(unittest.TestCase):
             export_dashboard(report(), root/"public", root/"private", statuses)
             parser = SnapshotParser()
             parser.feed((root/"public/index.html").read_text())
-            self.assertEqual(len(parser.scripts), 2)
+            self.assertEqual(len(parser.scripts), 4)
             status = json.loads(parser.data)["shows"][0]["status"]
             self.assertEqual(status["lead"]["checked_on"], "2026-11-07")
             self.assertEqual(status["lead"]["headline"], value["shows"]["123"]["facts"][0]["headline"])

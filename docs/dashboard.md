@@ -25,7 +25,7 @@ Serve **only `site/dist`**, rather than the repository root. The source assets l
 - Search, filters for progress and status facts, and release-window/title/unwatched-count sorting.
 - Explicit unknown, empty, old and failed-refresh states.
 
-The modernist layout uses sans-serif type, bold headings, flat colour blocks and a two-column card grid that becomes one column on narrow screens. Controls are labelled, filter state uses `aria-pressed`, source details use native expandable elements, and a live region announces result counts. Font and graphic assets are local; there are no external fonts, trackers or image requests.
+The modernist layout uses sans-serif type, bold headings, flat colour blocks and a two-column card grid that becomes one column on narrow screens. Controls are labelled, filter state uses `aria-pressed`, source details use native expandable elements, and a live region announces result counts. Font and graphic assets are local; there are no external font or image requests. Google Analytics is loaded separately as described below.
 
 Counts exclude specials, future episodes and episodes without air dates. A show with zero aired episodes is not counted as caught up. Unknown progress is excluded from episode totals and identified in the summary. Existing rewatch-reset limitations remain visible. Statuses come from [separate sourced assertions](status-updates.md), not from viewing progress. UK subscription availability remains unknown.
 
@@ -69,6 +69,12 @@ Normal builds copy the PNG unchanged and need no image-generation tools or font 
 
 The owner has chosen to keep the page unlisted for now: its `noindex, nofollow` meta tag remains, and the existing `robots.txt` is retained. Adding sharing previews does not enable search indexing.
 
+## Visitor analytics
+
+The page includes the asynchronous Google Analytics 4 tag for measurement ID `G-YJCYWQFHGB`, configured in `myshows/web/index.html`. It uses Google's `gtag.js` library and the standard page-view configuration. The application does not add custom analytics events or send watched-progress fields, Trakt credentials or account identifiers to analytics. The dashboard still works if the Google script is blocked or unavailable.
+
+The measurement ID is public configuration and needs no Actions secret. The tag is included in every built copy of the page, including local previews. After deployment, check the property's Realtime report or [Google Tag Assistant](https://tagassistant.google.com/) to confirm receipt of visits. The page remains marked `noindex, nofollow`.
+
 ## Retired OpenAI Sites hosting
 
 The former Sites deployment is no longer used. Its public access is removed and its pending `myshows.davecross.co.uk` attachment is detached. The Sites manifest has been removed from the repository. Available connector tools do not expose deletion/unpublishing, so the retained old Site is owner-only rather than deleted. There were no Site schedules to migrate.
@@ -79,6 +85,6 @@ No DNS changes are needed for the GitHub Pages project URL. The old Sites CNAME/
 
 The Python suite covers status evidence/precision validation, stable-ID matching, independent release/ending facts, public-field allowlisting, HTML/script injection prevention, cached/unknown progress, offline building and output-directory protection. Maintenance tests also cover research-source validation, request privacy, partial failures and last-good-value preservation. JavaScript syntax and Python compilation checks pass.
 
-Chromium checks at 1440, 1024, 768, 390 and 320 pixels confirm that all eight statuses and sources render without horizontal overflow; search, status filters, sorting, details and empty states work; and the page makes no external requests. A future-date check confirms that passed announcements and old evidence are flagged without inferring availability. Desktop and mobile screenshots were inspected. Browser tooling is temporary under `/tmp`, not a project dependency.
+Chromium checks at 1440, 1024, 768, 390 and 320 pixels confirmed that all eight initial statuses and sources rendered without horizontal overflow, and that search, status filters, sorting, details and empty states worked. Those initial checks predated the addition of Google Analytics; analytics now makes external requests. A future-date check confirmed that passed announcements and old evidence are flagged without inferring availability. Desktop and mobile screenshots were inspected. Browser tooling is temporary under `/tmp`, not a project dependency.
 
 The portable-snapshot tests also cover a clean checkout with no credentials/state, public-field round trips, invalid-input preservation, stable IDs and retained freshness. The workflow is checked with actionlint, and browser checks verify that assets and interactions work under the `/myshows/` project path.
