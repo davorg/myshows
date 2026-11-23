@@ -67,7 +67,7 @@
           "kind": "production",
           "season": 3,
           "headline": "Season 3 filming was underway in August",
-          "detail": "On August 25, 2026, Adam Scott confirmed filming had been underway for a few weeks. This dated milestone does not establish the current production stage. No premiere date was announced; UK timing remains unverified.",
+          "detail": "On August 25, 2026, Adam Scott said filming had been underway for a few weeks. This dated milestone does not establish the current production stage. No premiere date was announced; UK timing remains unverified.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
@@ -104,7 +104,7 @@
           "kind": "production",
           "season": 2,
           "headline": "Season 2 filming reported underway in Albuquerque",
-          "detail": "Dark Horizons reported on November 1, 2026 that filming had begun in Albuquerque, citing Production List. Apple had not announced a release window in that report; UK timing remains unverified.",
+          "detail": "Dark Horizons reported on November 1, 2026 that filming had begun, citing Production List. On November 19, the New Mexico Film Office officially announced the season’s return to Albuquerque, without specifying a filming start date. No release window was verified; UK timing remains unverified.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -112,6 +112,11 @@
               "name": "Dark Horizons",
               "url": "https://www.darkhorizons.com/pluribus-season-2-filming-gets-underway/",
               "published_on": "2026-11-01"
+            },
+            {
+              "name": "New Mexico Film Office",
+              "url": "https://nmfilm.com/news/vince-gilligans-pluribus-returns-to-new-mexico-creating-1-400-jobs",
+              "published_on": "2026-11-19"
             }
           ]
         },
@@ -120,7 +125,7 @@
           "kind": "renewal",
           "season": 2,
           "headline": "Season 2 officially ordered",
-          "detail": "Apple's July 25, 2025 announcement confirmed that the series had already been commissioned for a second season.",
+          "detail": "Apple’s July 25, 2025 announcement confirmed a second-season order.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
@@ -199,7 +204,7 @@
           "kind": "release",
           "season": 2,
           "headline": "Season 2 premieres January 14, 2027",
-          "detail": "Netflix’s new January announcement supersedes the earlier 2026 window. UK timing is unverified.",
+          "detail": "Netflix announced a January 14 premiere, replacing the earlier 2026 window. UK timing is unverified.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
@@ -221,27 +226,11 @@
           }
         },
         {
-          "id": "s3-renewal",
-          "kind": "renewal",
-          "season": 3,
-          "headline": "Season 3 is commissioned",
-          "detail": "Netflix confirms that Seasons 2 and 3 were renewed in May 2024. No third-season release date is announced.",
-          "confidence": "confirmed",
-          "checked_on": "2026-11-23",
-          "sources": [
-            {
-              "name": "Netflix Tudum",
-              "url": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
-              "published_on": "2026-11-17"
-            }
-          ]
-        },
-        {
           "id": "s3-filming",
           "kind": "production",
           "season": 3,
           "headline": "Season 3 filming was nearing completion in November",
-          "detail": "November 16 reporting described filming continuing around November 13 and a subsequent crew wrap party. A full filming wrap was not confirmed.",
+          "detail": "November 16 reporting described filming around November 13 and a crew wrap party. It did not establish a complete filming wrap.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -257,7 +246,7 @@
           "kind": "outcome",
           "season": 3,
           "headline": "Season 3 is reported as the planned conclusion",
-          "detail": "Production reporting describes the third season as the final chapter, rather than a cancellation.",
+          "detail": "Production reporting describes the third season as the final chapter, rather than a cancellation. No firm release window was established.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -265,6 +254,22 @@
               "name": "What's on Netflix",
               "url": "https://www.whats-on-netflix.com/news/3-body-problem-season-2-netflix-release-date-season-3-filming-update/",
               "published_on": "2026-11-16"
+            }
+          ]
+        },
+        {
+          "id": "s3-renewal",
+          "kind": "renewal",
+          "season": 3,
+          "headline": "Season 3 is commissioned",
+          "detail": "Netflix confirms that Seasons 2 and 3 were renewed in May 2024. No third-season release date is announced.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "Netflix Tudum",
+              "url": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
+              "published_on": "2026-11-17"
             }
           ]
         }
@@ -278,13 +283,13 @@
           "kind": "release",
           "season": 2,
           "headline": "Season 2 continues November 25; finale December 2",
-          "detail": "Radio Times lists episode 11 for November 25 and the season finale for December 2, 2026, on Disney+ in the UK.",
+          "detail": "Radio Times schedules episode 11 for November 25 and episode 12 for December 2, 2026, on Disney+ in the UK.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
             {
               "name": "Radio Times",
-              "url": "https://www.radiotimes.com/tv/drama/rivals-season-2-disney-plus-release-schedule/",
+              "url": "https://www.radiotimes.com/tv/drama/rivals-season-2-disney-plus-release-schedule",
               "published_on": "2026-11-18"
             }
           ],
@@ -299,7 +304,7 @@
           "kind": "renewal",
           "season": 3,
           "headline": "Season 3 renewed for 12 episodes",
-          "detail": "Disney+ announced the third-season commission on June 16, 2026, without a premiere date.",
+          "detail": "Disney+ announced a twelve-episode third season on June 16, 2026.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
@@ -315,7 +320,7 @@
           "kind": "production",
           "season": 3,
           "headline": "Season 3 filming planned for March 2027",
-          "detail": "In an October 19, 2026 report, executive producer Dominic Treadwell-Collins said filming would start in March. This was a future plan, not confirmation that shooting had begun.",
+          "detail": "An October 19, 2026 report quoted executive producer Dominic Treadwell-Collins saying filming would begin in March. This is a future plan, not evidence shooting has started.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -336,20 +341,20 @@
           "kind": "release",
           "season": 2,
           "headline": "Season 2 premieres in March 2027",
-          "detail": "Paramount+ announced the month at New York Comic Con on October 10, 2026. No exact day or separate UK timing was established.",
+          "detail": "Paramount+ confirms March 2027 following the New York Comic Con announcement. No exact day is given; UK timing remains unverified.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
             {
-              "name": "Paramount / CBS Studios",
-              "url": "https://www.paramountpressexpress.com/cbs-studios/shows/star-trek-starfleet-academy/releases/?view=113388-star-trek-beams-into-the-big-apple-to-celebrate-star-trek-starfleet-academy-and-60-years-of-the-iconic-franchise-at-new-york-comic-con",
-              "published_on": "2026-10-10"
+              "name": "Paramount+",
+              "url": "https://www.paramountplus.com/sneak-peak/star-trek-starfleet-academy-season-2-everything-to-know/",
+              "published_on": "2026-10-12"
             }
           ],
           "release": {
             "precision": "month",
             "value": "2027-03",
-            "region": "Paramount+; UK timing unverified"
+            "region": "US Paramount+; UK timing unverified"
           }
         },
         {
@@ -357,62 +362,46 @@
           "kind": "outcome",
           "season": 2,
           "headline": "Series ends after season 2",
-          "detail": "CBS Studios and Paramount+ confirmed the cancellation on March 23, 2026; the already-produced second season will be the last.",
+          "detail": "Paramount+ confirms that the second season will be the last in its official cancellation FAQ.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
             {
-              "name": "SYFY Wire / studio statement",
-              "url": "https://www.syfy.com/syfy-wire/star-trek-starfleet-academy-showrunners-on-series-ending-with-season-2",
-              "published_on": "2026-03-23"
+              "name": "Paramount+",
+              "url": "https://www.paramountplus.com/sneak-peak/star-trek-starfleet-academy-season-2-everything-to-know/",
+              "published_on": "2026-10-12"
             }
           ]
         },
         {
-          "id": "s2-post",
+          "id": "s2-filming-wrapped",
           "kind": "production",
           "season": 2,
-          "headline": "Season 2 was in post-production in March 2026",
-          "detail": "The showrunners confirmed post-production in their letter published March 23. This dated milestone does not establish the current production stage.",
+          "headline": "Season 2 filming wrapped in February 2026",
+          "detail": "Paramount+'s October 12 update confirms the February filming wrap; it does not establish the current post-production stage.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
             {
-              "name": "SYFY Wire / showrunners' letter",
-              "url": "https://www.syfy.com/syfy-wire/star-trek-starfleet-academy-showrunners-on-series-ending-with-season-2",
-              "published_on": "2026-03-23"
+              "name": "Paramount+",
+              "url": "https://www.paramountplus.com/sneak-peak/star-trek-starfleet-academy-season-2-everything-to-know/",
+              "published_on": "2026-10-12"
             }
           ]
         }
       ]
     },
     "162206": {
-      "lead": "final-season",
+      "lead": "s5-window",
       "facts": [
-        {
-          "id": "final-season",
-          "kind": "outcome",
-          "season": 5,
-          "headline": "Renewed fifth season will conclude the series",
-          "detail": "Paramount+ confirms that season 5 will comprise six episodes and be the show's last.",
-          "confidence": "confirmed",
-          "checked_on": "2026-11-23",
-          "sources": [
-            {
-              "name": "Paramount+",
-              "url": "https://www.paramountplus.com/sneak-peak/star-trek-strange-new-worlds-season-4/",
-              "published_on": "2026-09-28"
-            }
-          ]
-        },
         {
           "id": "s5-window",
           "kind": "release",
           "season": 5,
           "headline": "Final season announced for 2027",
-          "detail": "Paramount announced a 2027 return on Paramount+, without a month or day. UK timing is unverified.",
+          "detail": "Paramount confirms a 2027 return on Paramount+, without a month or day. UK timing is unverified.",
           "confidence": "confirmed",
-          "checked_on": "2026-11-16",
+          "checked_on": "2026-11-23",
           "sources": [
             {
               "name": "Paramount Press Express",
@@ -427,13 +416,29 @@
           }
         },
         {
+          "id": "final-season",
+          "kind": "outcome",
+          "season": 5,
+          "headline": "Renewed fifth season will conclude the series",
+          "detail": "Paramount+ confirms that season 5 will consist of six episodes and be the show's last.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "Paramount+",
+              "url": "https://www.paramountplus.com/sneak-peak/star-trek-strange-new-worlds-season-4/",
+              "published_on": "2026-09-28"
+            }
+          ]
+        },
+        {
           "id": "s5-post-production",
           "kind": "production",
           "season": 5,
           "headline": "Season 5 was in post-production in July 2026",
-          "detail": "TrekCore reported on July 15, 2026 that season 5 was in post-production; this does not establish its current completion status.",
+          "detail": "TrekCore reported post-production on July 15, 2026; that milestone does not establish its current completion status.",
           "confidence": "reported",
-          "checked_on": "2026-11-08",
+          "checked_on": "2026-11-23",
           "sources": [
             {
               "name": "TrekCore",
@@ -452,7 +457,7 @@
           "kind": "release",
           "season": 2,
           "headline": "Season 2 is expected in the first half of 2027.",
-          "detail": "Radio Times reported HBO's return window on September 17, 2026. No exact premiere date was announced; UK timing remains unverified.",
+          "detail": "Radio Times reported the HBO return window on September 17, 2026. No exact premiere date was given; UK timing remains unverified.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -473,7 +478,7 @@
           "kind": "production",
           "season": 2,
           "headline": "Season 2 reportedly finished filming in August 2026.",
-          "detail": "Radio Times reported the completed shoot on September 17, following weather-related interruptions.",
+          "detail": "Radio Times reported on September 17, 2026 that filming had wrapped the previous month after weather disruptions.",
           "confidence": "reported",
           "checked_on": "2026-11-23",
           "sources": [
@@ -489,7 +494,7 @@
           "kind": "renewal",
           "season": 2,
           "headline": "HBO renewed the series for Season 2.",
-          "detail": "HBO announced the renewal on November 20, 2025, ahead of the series premiere, with the second season planned for 2027.",
+          "detail": "HBO announced the renewal on November 20, 2025, ahead of the series debut, with Season 2 planned for 2027.",
           "confidence": "confirmed",
           "checked_on": "2026-11-23",
           "sources": [
@@ -571,6 +576,80 @@
               "name": "Radio Times",
               "url": "https://www.radiotimes.com/tv/fantasy/house-of-the-dragon-season-4-production-update-newsupdate/",
               "published_on": "2026-09-15"
+            }
+          ]
+        }
+      ]
+    },
+    "158947": {
+      "lead": "the-last-of-us-s3-release-2027",
+      "facts": [
+        {
+          "id": "the-last-of-us-s3-release-2027",
+          "kind": "release",
+          "season": 3,
+          "headline": "Season 3 is planned for 2027",
+          "detail": "HBO's Casey Bloys indicated a 2027 return on HBO and HBO Max in the US. An exact premiere date and UK timing remain unverified.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "TV Insider",
+              "url": "https://www.tvinsider.com/1185642/the-last-of-us-season-3-renewed-premiere-date-trailer-cast-plot-hbo/",
+              "published_on": "2026-09-26"
+            }
+          ],
+          "release": {
+            "precision": "year",
+            "value": "2027",
+            "region": "US"
+          }
+        },
+        {
+          "id": "the-last-of-us-s3-filming",
+          "kind": "production",
+          "season": 3,
+          "headline": "Filming is expected to continue until March 2027",
+          "detail": "In a November 19, 2026 report, Gabriel Luna said filming had been underway since March 2026 and probably would not finish until March 2027.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "Radio Times",
+              "url": "https://www.radiotimes.com/tv/sci-fi/the-last-of-us-gabriel-luna-production-update-newsupdate/",
+              "published_on": "2026-11-19"
+            }
+          ]
+        },
+        {
+          "id": "the-last-of-us-s3-planned-ending",
+          "kind": "outcome",
+          "season": 3,
+          "headline": "Season 3 is being planned as the final season",
+          "detail": "In September 2026, Casey Bloys said he believed Craig Mazin had planned season 3 as the ending. This is a qualified statement about a planned conclusion, not a cancellation announcement.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "Radio Times",
+              "url": "https://www.radiotimes.com/tv/sci-fi/the-last-of-us-final-season-3-hbo-newsupdate/",
+              "published_on": "2026-09-16"
+            }
+          ]
+        },
+        {
+          "id": "the-last-of-us-s3-renewal",
+          "kind": "renewal",
+          "season": 3,
+          "headline": "HBO renewed the series for season 3",
+          "detail": "HBO announced a third season, with programming executive Francesca Orsi confirming the continuation.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-23",
+          "sources": [
+            {
+              "name": "TV Insider",
+              "url": "https://www.tvinsider.com/1185642/the-last-of-us-season-3-renewed-premiere-date-trailer-cast-plot-hbo/",
+              "published_on": "2026-09-26"
             }
           ]
         }
