@@ -11,7 +11,7 @@ python3 -m myshows build --snapshot data/watchlist.json
 python3 -m http.server 8000 --bind 127.0.0.1 --directory site/dist
 ```
 
-Open `http://127.0.0.1:8000`. The public-snapshot build works in a clean checkout without Trakt credentials, a SQLite cache or network access. `build --list following` remains available when building directly from a local private cache; replace `following` with the actual list slug/ID if different. Use `--output /path/to/public-directory` to choose another output folder. It rejects the private state directory, its ancestors/descendants, and output folders containing unrelated files. Only the four dashboard files are exported.
+Open `http://127.0.0.1:8000`. The public-snapshot build works in a clean checkout without Trakt credentials, a SQLite cache or network access. `build --list following` remains available when building directly from a local private cache; replace `following` with the actual list slug/ID if different. Use `--output /path/to/public-directory` to choose another output folder. It rejects the private state directory, its ancestors/descendants, and output folders containing unrelated files. Only the five dashboard files are exported: HTML, CSS, JavaScript, `robots.txt` and the sharing image.
 
 Serve **only `site/dist`**, rather than the repository root. The source assets live in `myshows/web/`; the exporter is `myshows/dashboard.py`. Generated assets are ignored by Git. The committed `data/watchlist.json` contains only the public viewing-progress fields already shown on the dashboard; it is not a private backup. The deployed snapshot is public; no Trakt credentials, account identifiers, list notes, raw API URLs or error bodies are exported.
 
@@ -45,13 +45,29 @@ The [maintenance guide](maintenance.md) explains each independent operation, cre
 
 ## GitHub Pages publication
 
-The workflow is `.github/workflows/pages.yml`. It runs on pushes to `main`, pull requests, and manual dispatch. Both push and PR runs execute the offline tests, syntax checks and a credential-free build. Only a main-branch push or manual main-branch run uploads the four files in `site/dist` and deploys them. PRs have no Pages deployment permissions.
+The workflow is `.github/workflows/pages.yml`. It runs on pushes to `main`, pull requests, and manual dispatch. Both push and PR runs execute the offline tests, syntax checks and a credential-free build. Only a main-branch push or manual main-branch run uploads the five files in `site/dist` and deploys them. PRs have no Pages deployment permissions.
 
 Actions are pinned to verified commit SHAs. Build jobs have read-only repository access. Only the deployment job receives `pages: write` and `id-token: write`, using the `github-pages` environment and GitHub's standard upload/deploy actions. There are no Trakt secrets or private-cache artifacts in Actions. A failed test or invalid snapshot leaves the previous successful deployment intact.
 
 The repository's Pages source is **GitHub Actions** (`build_type: workflow`). The site inherits the account's existing `davorg.dev` domain, so the project URL is `https://davorg.dev/myshows/`. Do not add a repository `CNAME` file for `davorg.dev`; that domain belongs to the existing account site. Relative asset/home links work below `/myshows/` as well as in a local root preview.
 
 Publication happens automatically after a user push. The Actions run and the `github-pages` environment report the deployment URL and failures. Both refresh workflows explicitly dispatch Pages after saving changed public data, because bot-token pushes do not trigger the push workflow. Rerunning Pages alone does not make source-check dates newer.
+
+## Sharing previews
+
+The HTML head includes a canonical link, Open Graph metadata and a large-image Twitter card. These are present in the saved HTML, so preview crawlers do not need JavaScript or access to Trakt. The title and description describe the dashboard; the image contains branding rather than changing programme facts or viewing history.
+
+The canonical and sharing URLs use `https://davorg.dev/myshows/`, with the image at `https://davorg.dev/myshows/og-image.png`. Update those absolute URLs in `myshows/web/index.html` if the public address changes, along with the address printed in the image. Relative CSS/JavaScript links still work in a local root preview and below the Pages project path.
+
+The image is a committed 1200×630 PNG in `myshows/web/og-image.png`; its editable source is `artwork/og-image.svg`. It uses the dashboard's typography, arrow and flat colour palette. To regenerate the PNG after editing the SVG, use `rsvg-convert` with an Arial-compatible font installed (Liberation Sans was used for the committed image):
+
+```sh
+rsvg-convert --output myshows/web/og-image.png artwork/og-image.svg
+```
+
+Normal builds copy the PNG unchanged and need no image-generation tools or font dependencies. Image metadata includes its dimensions, type and alternative text. Follow the [Open Graph protocol](https://ogp.me/) when changing the tags. Sharing services may cache previews; after deployment, use their preview refresh/debug tools if an older card persists.
+
+The owner has chosen to keep the page unlisted for now: its `noindex, nofollow` meta tag remains, and the existing `robots.txt` is retained. Adding sharing previews does not enable search indexing.
 
 ## Retired OpenAI Sites hosting
 

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">My Shows — What's next</title>
+  <desc id="description">Your shows. What's next. Bold black and cobalt typography, an arrow, and lime, lavender and orange blocks reading Renewed, In production and On its way.</desc>
+  <rect width="1200" height="630" fill="#f4f4ef"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171817">
+    <rect x="56" y="48" width="40" height="40" fill="#3045ed"/>
+    <path d="M67 58h20v20h-6V68L68 81l-4-4 13-13H67z" fill="#fff"/>
+    <text x="110" y="79" font-size="28" font-weight="900" letter-spacing="-1">MY SHOWS<tspan fill="#3045ed">.</tspan></text>
+    <text x="1144" y="76" text-anchor="end" font-size="18" font-weight="700">davorg.dev/myshows</text>
+    <path d="M56 116H1144" stroke="#171817" stroke-width="2"/>
+
+    <text x="56" y="174" font-size="13" font-weight="700" letter-spacing="2">RENEWED. IN PRODUCTION. ON ITS WAY.</text>
+    <g font-size="100" font-weight="900" letter-spacing="-5">
+      <text x="50" y="283">YOUR SHOWS.</text>
+      <text x="50" y="380" fill="#3045ed">WHAT'S NEXT.</text>
+    </g>
+    <text x="56" y="431" font-size="25">Renewals. Production. Release dates.</text>
+
+    <rect x="908" y="158" width="236" height="290" fill="#3045ed"/>
+    <path d="M951 207h148v148h-33v-92L957 372l-23-23 109-109h-92z" fill="#fff"/>
+
+    <rect x="56" y="498" width="350" height="76" fill="#d6ed5b"/>
+    <rect x="418" y="498" width="350" height="76" fill="#dad6fb"/>
+    <rect x="780" y="498" width="364" height="76" fill="#ff996d"/>
+    <g font-size="19" font-weight="700" letter-spacing="0.5">
+      <text x="79" y="543">RENEWED.</text>
+      <text x="441" y="543">IN PRODUCTION.</text>
+      <text x="803" y="543">ON ITS WAY.</text>
+    </g>
+  </g>
+</svg>

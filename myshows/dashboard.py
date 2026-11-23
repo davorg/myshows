@@ -11,7 +11,7 @@ from .state import AppError
 from .status import display_status
 
 ASSETS = Path(__file__).with_name("web")
-PUBLIC_FILES = {"index.html", "dashboard.css", "dashboard.js", "robots.txt"}
+PUBLIC_FILES = {"index.html", "dashboard.css", "dashboard.js", "robots.txt", "og-image.png"}
 
 
 def public_time(value):
@@ -84,6 +84,7 @@ def export_dashboard(report, directory, private_directory, statuses=None):
             shutil.copyfile(ASSETS / name, staging / name)
         destination.mkdir(exist_ok=True)
         # Install index last, so visitors never see a page without its assets.
-        for name in ("dashboard.css", "dashboard.js", "robots.txt", "index.html"):
+        for name in sorted(PUBLIC_FILES - {"index.html"}):
             (staging / name).replace(destination / name)
+        (staging / "index.html").replace(destination / "index.html")
     return snapshot
