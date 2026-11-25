@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "list_checked_at": "2026-11-24T18:45:04+00:00",
+  "list_checked_at": "2026-11-25T00:54:07+00:00",
   "list_refresh_failed": false,
   "shows": [
     {
@@ -24,7 +24,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:04+00:00",
+      "checked_at": "2026-11-25T00:54:07+00:00",
       "refresh_failed": false
     },
     {
@@ -48,7 +48,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:05+00:00",
+      "checked_at": "2026-11-25T00:54:08+00:00",
       "refresh_failed": false
     },
     {
@@ -72,7 +72,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:05+00:00",
+      "checked_at": "2026-11-25T00:54:08+00:00",
       "refresh_failed": false
     },
     {
@@ -96,7 +96,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:06+00:00",
+      "checked_at": "2026-11-25T00:54:08+00:00",
       "refresh_failed": false
     },
     {
@@ -120,7 +120,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:06+00:00",
+      "checked_at": "2026-11-25T00:54:09+00:00",
       "refresh_failed": false
     },
     {
@@ -144,7 +144,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:07+00:00",
+      "checked_at": "2026-11-25T00:54:09+00:00",
       "refresh_failed": false
     },
     {
@@ -168,7 +168,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:07+00:00",
+      "checked_at": "2026-11-25T00:54:09+00:00",
       "refresh_failed": false
     },
     {
@@ -178,21 +178,21 @@
       "url": "https://trakt.tv/shows/star-trek-strange-new-worlds",
       "progress": {
         "aired": 40,
-        "watched": 32,
-        "aired_unwatched": 8,
+        "watched": 34,
+        "aired_unwatched": 6,
         "recent": {
           "season": 4,
-          "episode": 2,
-          "watched_at": "2026-11-22T16:15:00+00:00"
+          "episode": 4,
+          "watched_at": "2026-11-24T22:43:00+00:00"
         },
         "furthest": {
           "season": 4,
-          "episode": 2,
-          "watched_at": "2026-11-22T16:15:00+00:00"
+          "episode": 4,
+          "watched_at": "2026-11-24T22:43:00+00:00"
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:07+00:00",
+      "checked_at": "2026-11-25T00:54:09+00:00",
       "refresh_failed": false
     },
     {
@@ -216,7 +216,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:08+00:00",
+      "checked_at": "2026-11-25T00:54:10+00:00",
       "refresh_failed": false
     },
     {
@@ -240,7 +240,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:08+00:00",
+      "checked_at": "2026-11-25T00:54:10+00:00",
       "refresh_failed": false
     },
     {
@@ -264,7 +264,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-24T18:45:08+00:00",
+      "checked_at": "2026-11-25T00:54:10+00:00",
       "refresh_failed": false
     }
   ]
