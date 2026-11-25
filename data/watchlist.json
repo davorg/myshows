@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "list_checked_at": "2026-11-25T12:45:50+00:00",
+  "list_checked_at": "2026-11-25T18:44:41+00:00",
   "list_refresh_failed": false,
   "shows": [
     {
@@ -24,7 +24,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:50+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -48,7 +48,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:50+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -72,7 +72,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:51+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -82,21 +82,21 @@
       "url": "https://trakt.tv/shows/the-lord-of-the-rings-the-rings-of-power",
       "progress": {
         "aired": 24,
-        "watched": 22,
-        "aired_unwatched": 2,
+        "watched": 23,
+        "aired_unwatched": 1,
         "recent": {
           "season": 3,
-          "episode": 6,
-          "watched_at": "2026-11-19T14:02:00+00:00"
+          "episode": 7,
+          "watched_at": "2026-11-25T14:39:00+00:00"
         },
         "furthest": {
           "season": 3,
-          "episode": 6,
-          "watched_at": "2026-11-19T14:02:00+00:00"
+          "episode": 7,
+          "watched_at": "2026-11-25T14:39:00+00:00"
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:51+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -120,7 +120,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:51+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -144,7 +144,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:52+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -168,7 +168,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:52+00:00",
+      "checked_at": "2026-11-25T18:44:41+00:00",
       "refresh_failed": false
     },
     {
@@ -192,7 +192,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:52+00:00",
+      "checked_at": "2026-11-25T18:44:42+00:00",
       "refresh_failed": false
     },
     {
@@ -216,7 +216,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:52+00:00",
+      "checked_at": "2026-11-25T18:44:42+00:00",
       "refresh_failed": false
     },
     {
@@ -240,7 +240,7 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:52+00:00",
+      "checked_at": "2026-11-25T18:44:42+00:00",
       "refresh_failed": false
     },
     {
@@ -264,7 +264,47 @@
         },
         "rewatch_reset": false
       },
-      "checked_at": "2026-11-25T12:45:53+00:00",
+      "checked_at": "2026-11-25T18:44:42+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 170689,
+      "title": "Alien: Earth",
+      "year": 2025,
+      "url": "https://trakt.tv/shows/alien-earth",
+      "progress": {
+        "aired": 8,
+        "watched": 8,
+        "aired_unwatched": 0,
+        "recent": {
+          "season": 1,
+          "episode": 8,
+          "watched_at": "2025-09-24T12:30:00+00:00"
+        },
+        "furthest": {
+          "season": 1,
+          "episode": 8,
+          "watched_at": "2025-09-24T12:30:00+00:00"
+        },
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-25T18:44:42+00:00",
+      "refresh_failed": false
+    },
+    {
+      "trakt_id": 193839,
+      "title": "Blade Runner 2099",
+      "year": 2026,
+      "url": "https://trakt.tv/shows/blade-runner-2099",
+      "progress": {
+        "aired": 8,
+        "watched": 0,
+        "aired_unwatched": 8,
+        "recent": null,
+        "furthest": null,
+        "rewatch_reset": false
+      },
+      "checked_at": "2026-11-25T18:44:42+00:00",
       "refresh_failed": false
     }
   ]
