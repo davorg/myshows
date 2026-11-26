@@ -654,6 +654,69 @@
           ]
         }
       ]
+    },
+    "170689": {
+      "lead": "alien-earth-s2-production-start",
+      "facts": [
+        {
+          "id": "alien-earth-s2-production-start",
+          "kind": "production",
+          "season": 2,
+          "headline": "Season 2 production began in London",
+          "detail": "Disney+ announced on July 10, 2026 that production was underway in London. This establishes the start milestone, not the current filming stage. UK premiere timing remains unverified.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-26",
+          "sources": [
+            {
+              "name": "Disney+ UK Press",
+              "url": "https://press.disney.co.uk/news/tracy-ullman-sam-spruell-and-jerome-flynn-join-the-season-two-cast-of-fxs-alien-earth-coming-to-disneyplus",
+              "published_on": "2026-07-10"
+            }
+          ]
+        },
+        {
+          "id": "alien-earth-s2-renewed",
+          "kind": "renewal",
+          "season": 2,
+          "headline": "FX renewed Alien: Earth for Season 2",
+          "detail": "FX ordered a second season; chairman John Landgraf publicly welcomed work on the next season.",
+          "confidence": "confirmed",
+          "checked_on": "2026-11-26",
+          "sources": [
+            {
+              "name": "Variety Australia",
+              "url": "https://au.variety.com/2025/tv/news/alien-earth-renewed-season-2-noah-hawley-overall-deal-fx-29894/",
+              "published_on": null
+            }
+          ]
+        }
+      ]
+    },
+    "193839": {
+      "lead": "blade-runner-2099-limited-series-outcome",
+      "facts": [
+        {
+          "id": "blade-runner-2099-limited-series-outcome",
+          "kind": "outcome",
+          "season": 1,
+          "headline": "Planned as a one-season limited series; no season 2 renewal",
+          "detail": "Amazon bills the show as a limited series. Creator Silka Luisa said it was designed to tell a complete story in one season. As of November 26, 2026, no second season has been announced; this is a planned ending, not a cancellation.",
+          "confidence": "reported",
+          "checked_on": "2026-11-26",
+          "sources": [
+            {
+              "name": "Amazon",
+              "url": "https://www.aboutamazon.com/news/entertainment/blade-runner-2099-prime-video",
+              "published_on": "2026-07-24"
+            },
+            {
+              "name": "ELLE",
+              "url": "https://www.elle.com/culture/movies-tv/a74527438/blade-runner-2099-season-2-cast-release-date/",
+              "published_on": "2026-11-25"
+            }
+          ]
+        }
+      ]
     }
   }
 }
